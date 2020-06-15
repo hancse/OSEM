@@ -7,6 +7,7 @@
 ## IoT reference architecture
 - ISO Internet of Things (loT) Reference Architecture [ISO30141](https://www.iso.org/standard/65695.html)
 - IoT Reference Architecture [In Search of a Universal Solution](https://hqsoftwarelab.com/blog/iot-reference-architecture-in-search-of-a-universal-solution/)
+- Book Springer Open Access: [EnablingThings to Talk, Designing IoT solutions with the IoT Architectural Reference Model](https://link.springer.com/book/10.1007/978-3-642-40403-0)
 - [4 Stages of IoT architecture explained in simple words](https://medium.com/datadriveninvestor/4-stages-of-iot-architecture-explained-in-simple-words-b2ea8b4f777f)
 - [IoT notes](https://iotnotesbyparita.wordpress.com/architecture-reference-model/)
   
