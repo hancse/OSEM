@@ -10,6 +10,9 @@
 - Book Springer Open Access: [EnablingThings to Talk, Designing IoT solutions with the IoT Architectural Reference Model](https://link.springer.com/book/10.1007/978-3-642-40403-0)
 - [4 Stages of IoT architecture explained in simple words](https://medium.com/datadriveninvestor/4-stages-of-iot-architecture-explained-in-simple-words-b2ea8b4f777f)
 - [IoT notes](https://iotnotesbyparita.wordpress.com/architecture-reference-model/)
+
+## Software engineering
+- Video Agile Architecture [Part 1 - Allen Holub](https://www.youtube.com/watch?v=0kRCFVGpX7k)
   
 ## IoT related examples of development 
 - [Architecture guidelines For Trans-European Telematics
