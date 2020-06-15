@@ -1,6 +1,6 @@
 # OSEM
 
-## Requirements management and UML
+## Requirements management and UML 2
 - Requirements guidelines [RFC2119](https://tools.ietf.org/html/rfc2119)
 - [UML class diagrams reference](https://www.uml-diagrams.org/class-reference.html)
 
