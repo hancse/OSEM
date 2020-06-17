@@ -1,8 +1,9 @@
 # OSEM
 
-## Requirements management and UML 2
+## Requirements management, UML 2 and PlantUML
 - Requirements guidelines [RFC2119](https://tools.ietf.org/html/rfc2119)
 - [UML class diagrams reference](https://www.uml-diagrams.org/class-reference.html)
+- Examples [Real World PlantUML](https://real-world-plantuml.com/)
 
 ## IoT reference architecture
 - ISO Internet of Things (loT) Reference Architecture [ISO30141](https://www.iso.org/standard/65695.html)
