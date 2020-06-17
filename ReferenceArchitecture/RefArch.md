@@ -1,5 +1,11 @@
 # Reference Architecture
 
-## Use case diagram SIOM
+## Deployment diagram
+```plantuml
+!include uml/dpd_SYS.puml
+```
 
-![SIOM](images/Satellite%20IO%20ModuleMQTT%20client.png)
+## Use case diagram SIOM 
+```plantuml
+!include uml/ucd_SIOM.puml
+```
