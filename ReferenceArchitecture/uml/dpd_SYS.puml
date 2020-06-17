@@ -1,0 +1,25 @@
+@startuml
+
+title Deployment diagram\n
+
+node "Cloud Message Server" as CMS
+
+node "<<RPi4>>\nHouse\nHeating System Controller" as HHSC
+node "<<PC/RPi4>>\nHouse\nEnergy Manager" as HEM
+node "<<server>>\nArea\nEnergy Manager" as AEM
+node "<<  ESP32>>\nSatellite IO Module [1..n]" as SIOM {
+   artifact "<<upython>>"
+}
+node "Wireless Access Point" as WAP
+cloud internet
+cloud "house local" as local
+
+SIOM -- local: <<wireless>>
+local -- WAP: <<wireless>>\n<<network>>
+WAP -- internet
+local -up- HHSC
+HEM -- local : <<wireless>>
+AEM -up- internet
+CMS =left= internet : <<message passing protocol>>
+
+@enduml

@@ -1,0 +1,44 @@
+@startuml
+
+title Satellite IO Module\nMQTT client
+
+left to right direction
+
+: FT : <<sensor/transmitter>> as ft
+: TTin : <<sensor>> as ttin
+: TTout : <<sensor>> as ttout
+: M : <<actuator>> as m
+
+: system engineer : as seng
+
+rectangle "System controller" as sctl {
+}
+
+rectangle "<<in the cloud>>\nMQTT broker" as mbr {
+}
+
+rectangle "SIO module" {
+  usecase "initialise" as init
+  usecase "configure" as conf
+  usecase "control" as cntrl
+  usecase "dertermine\ncontrol\nstrategy" as scs 
+  usecase "<<MQTT>>\npublish\nsubscribe" as pubsub
+  usecase "store\nIO time serie\ndata" as siod
+
+  (init) .> (conf) : include
+  (conf) .> (pubsub) : include
+  (cntrl) .> (siod) : include
+  (cntrl) ..> (scs) : include
+}
+
+ft --> cntrl
+ttin --> cntrl
+ttout --> cntrl
+cntrl ---> m
+
+seng -> sctl
+sctl <---> mbr
+
+pubsub <--> mbr
+
+@enduml
