@@ -1,0 +1,80 @@
+@startuml
+
+left to right direction
+
+skinparam {
+  BackgroundColor White
+  DefaultFontName Arial
+  Shadowing true
+}
+
+skinparam actor {
+  BackgroundColor FAA634
+  BorderColor E50056
+  FontColor Black
+}
+
+skinparam rectangle {
+ 	BackgroundColor E8E8E8
+ 	FontColor Black
+  FontSize 25
+}
+
+skinparam usecase {
+  BackgroundColor FAA634
+  BorderColor E50056
+}
+
+skinparam arrow {
+  Color E50056
+}
+
+: House_heating_system : as hhsmng <<HHS>>
+: House_heating_system : as hhsopt <<HHS>>
+: FT_610_feed : as ft_610
+: TT_2010_feed : as tt_2010
+: TT_2020_return : as tt_2020
+: XV_2410_feed : as xv_2410
+: Smart_Meter : as SMT_xx10
+
+rectangle "SATELLITE IO MODULE\n" as siom {
+  usecase rdhist as "<b>Read history IO\n<b>time series data"
+  usecase stst as "<b>Self test SIOM"
+  usecase updt as "<b>Update SIOM"
+  usecase conf as "<b>(Re)configure SIOM"
+  usecase boot as "<b>Boot SIOM"
+  usecase mngdvc as "\n<b>Manage device\n\n--\n<b>extension points\n\
+    - Initialize and configure SIOM\n\
+    - Update SIOM firmware and/or application\n\
+    - Perform SIOM self test\n\
+    - Read and send history data"
+  usecase iioh as "\n<b>Handle instrument IO\n\n--\n<b>extension points\n\
+    - Update instrument handling configuration\n\
+    - Locally control room temperature"
+  usecase ctrlt as "<b>Control temperature" 
+  usecase updtconf as "<b>Update configuration" 
+  usecase stsd as "<b>Store IO\n<b>time series data"
+  usecase comio as "<b>Communicate\n<b>instrument IO readings" 
+  
+  mngdvc <... updt : <<extend>>\n<b>Condition:</b> on update command
+  mngdvc <... stst : <<extend>>\n<b>Condition:</b> on self test command
+  mngdvc <... rdhist : <<extend>>\n<b>Condition:</b> on IO time series data request
+  conf <.. boot : <<include>>
+  mngdvc <.. boot : <<extend>>\n<b>Condition:</b> on power-up | reset
+  mngdvc <. conf : <<extend>>\n<b>Condition:</b> on configuration update
+
+  iioh <... ctrlt : <<extend>>\n<b>Condition:</b> on system error
+  iioh <... updtconf : <<extend>>\n<b>Condition:</b> on configuration update
+  iioh ..> stsd : <<include>>
+  iioh ..> comio : <<include>>
+}
+
+ft_610 --> iioh
+tt_2010 --> iioh
+tt_2020 --> iioh
+SMT_xx10 --> iioh
+iioh ----> xv_2410
+comio <---> hhsopt
+hhsmng <--> mngdvc
+
+@enduml
