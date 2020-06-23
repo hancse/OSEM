@@ -1,0 +1,47 @@
+@startuml
+
+skinparam rectangle {
+    BackgroundColor E8E8E8
+    FontColor Black
+    FontSize 25
+    
+    BackgroundColor<<Area Energy Manager>> faa634
+
+    BackgroundColor<<House Energy Manager [1..n]>> 76c58c
+
+    BackgroundColor<<Heating System Manager>> 61c2ee
+    BackgroundColor<<Electrical System Manager>> 61c2ee
+
+    BackgroundColor<<Domestic Hot Water System>> fde051
+    BackgroundColor<<Heat Production System>> fde051
+    BackgroundColor<<Heat Delivery System>> fde051
+    BackgroundColor<<Electricity Production System>> fde051
+    
+    BackgroundColor<<Heat Delivery Group [1..n]>> f04e37
+    BackgroundColor<<Heat Delivery Element [1..n]>> b43e97
+}
+
+rectangle "OPEN SOURCE ENERGY MANAGER SYSTEM LAYERS" {
+    rectangle <<Area Energy manager>> {
+        rectangle <<House Energy manager [1..n]>> {
+            rectangle <<Electrical System Manager>> {
+                rectangle <<Electricity Production System>> {
+                }
+            }
+            rectangle <<Heating System Manager>> {
+                rectangle <<Heat Production System>> {
+                }
+                rectangle <<Heat Delivery System>> {
+                    rectangle <<Heat Delivery Group [1..n]>> {
+                        rectangle <<Heat Delivery Element [1..n]>> {
+                        }
+                    }
+                }
+                rectangle <<Domestic Hot Water System>> {
+                }
+            }
+        }
+    }
+}
+
+@enduml
