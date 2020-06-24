@@ -1,0 +1,88 @@
+@startuml
+
+skinparam {
+  BackgroundColor White
+  DefaultFontName Arial
+  Shadowing true
+}
+
+skinparam rectangle {
+  BackgroundColor E8E8E8
+  FontColor Black
+  FontSize 25
+}
+
+skinparam cloud {
+  BackgroundColor 61c2ee
+  BorderColor 2a5caa
+  FontColor Black
+}
+
+skinparam node {
+  BackgroundColor FAA634
+  BorderColor E50056
+}
+
+skinparam artifact {
+  BackgroundColor fde051
+  BorderColor E50056
+}
+
+skinparam database {
+  BackgroundColor fde051
+  BorderColor E50056
+}
+ 
+rectangle "HOUSE ENERGY SYSTEM" {
+
+  node "<<device:RPi4::Ubuntu Appliance>>\nHouse Energy System Server\n-----" as lems {
+    artifact "<<House Energy System Manager>>" as lem
+    artifact "<<House Heating System Controller>>" as lhsc
+    artifact "<<House Electrical System Controller>>" as lesc
+    artifact "<<local mqtt broker>>" as lmqtt
+    database "<<dbserver>>\nSQLite" as dbsrv
+
+    lmqtt .. lhsc
+    lmqtt .. lesc
+    lem .. lmqtt
+    lem -- lhsc
+    lem -- lesc
+    lem -- dbsrv
+    dbsrv -- lhsc
+    dbsrv -- lesc
+  }
+
+  node "<<device:TinyPico::MicroPython>>\nSatellite IO Module [1..n]" as siom {
+    artifact "<<MQTT Client>>" as lmqttc
+    artifact "<<Device Manager>>" as dvcm
+    artifact "<<SIOM Application>>" as siomapp
+
+    siomapp -- lmqttc
+    dvcm -- lmqttc
+  }
+
+  node "<<device:SmartPhone>>\nOperator Console [1..n]" as smrtphn {
+    artifact "<<MQTT Client>>" as mqttc
+  }
+
+  node "<<device>>\nWiFi Access Point" as ap
+
+  cloud "local cloud" as lan
+}
+
+cloud "cloud" as wan {
+    node "<<device>>\nArea Energy System Manager" as aesm
+    node "<<device>>\nMQTT Broker" as cmqtt
+    node "<<device>>\nMeteoServer: Solar API" as wthrapi
+    node "<<device>>\nBig Data Station" as bdsrv
+}
+
+siom -- lan: <<protocol>>\nWiFi:MQTT
+smrtphn -- lan:<<protocol>>\nWiFi:MQTT
+lan -- ap: <<protocol>>\nWiFi:MQTT
+lems -- lan : <<protocol>>\nWiFi:MQTT
+ap -- wan
+
+
+
+@enduml
