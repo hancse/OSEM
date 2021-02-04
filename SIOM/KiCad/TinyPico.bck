@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP TinyPico
+D TinyPico development board
+K ESP32
+F https://www.tinypico.com/
+$ENDCMP
+#
+#End Doc Library
