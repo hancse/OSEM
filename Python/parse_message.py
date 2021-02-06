@@ -10,6 +10,8 @@ for key,value in d.items():
 for key in d:
     print(key, ' : ', d[key])
 
+[print(key, value) for key, value in d.items()]
+
 d2 = d
 s = json.dumps(d2)
 print(s)
