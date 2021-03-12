@@ -1,36 +1,22 @@
 % This script imports daasets of solar irradiation, ambient temperature and
 % DHW usage profile
 
-
+% Daay of the year (1 to 365)
+Day = 20;
 %% Solar irradiation data [W/m2]:
-G = xlsread('Climate260.xls','C28:C8788');
+% Hourly values for one year (Source KNMI)
+load('SolarIrradiationData');
+% Hourly data for a period of one day:
+G=Irr(24*Day:24*Day+23);
+% Data per minute:
+G_sim=kron(G,ones(60,1));
 
 %% Ambient temperature data [C]:
-Ta= xlsread('Climate260.xls','D28:D8788');
-
-%% Hot water usage data [m3/s]:
-DHW = zeros(8760,1);
-
-%% time:
-t= 1:1:8760;
-t=t';
-counter=1;
-%% MPC weights:
-% favor the use of the HP when the ambient temp is low:
-W_HP = Ta.^2;
-W_HP = W_HP';
-% Favor the use of the eectric heater when there is PV production:
-W_electric = G+10;
-W_electric = W_electric';
-
-%% Data plots:
-figure(1)
-title('Climate datasets')
-subplot(2,1,1)
-plot(t,G)
-xlabel('time [hour]')
-ylabel('GLobal Irradiation [w/m2]')
-subplot(2,1,2)
-plot(t,Ta)
-xlabel('Time [hour]')
-ylabel('ambient temperature [C]')
+% Hourly values for one year (Source KNMI)
+load('AmbientTempData');
+Tambient = Tamb(24*Day:24*Day+23);
+Tambient_sim = kron(Tambient,ones(60,1));
+time = 0:60:(24*60*60)-60;
+time=time';
+%% Hot water tapping profile [l/h]:
+DHW = importdata('DHW.txt');

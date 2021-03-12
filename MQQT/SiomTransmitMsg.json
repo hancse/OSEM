@@ -1,0 +1,18 @@
+{
+	"UnitStatus":   "<Some textual info; TBD>",
+	"LogMsg":       "<Logging info with max of 256 chars>",
+	"P1Msg":       	"<P1 payload>",
+	"TempSensor01": "<Some value in *C, -55..125 to 3 decimals e.g. -12.125>",
+	"TempSensor02": "<Some value in *C, -55..125 to 3 decimals e.g. -12.125>",
+	"TempSensor03": "<Some value in *C, -55..125 to 3 decimals e.g. -12.125>",
+	"TempSensor04": "<Some value in *C, -55..125 to 3 decimals e.g. -12.125>",
+	"TempSensor05": "<Some value in *C, -55..125 to 3 decimals e.g. -12.125>",
+	"TempSensor06": "<Some value in *C, -55..125 to 3 decimals e.g. -12.125>",
+	"TempSensor07": "<Some value in *C, -55..125 to 3 decimals e.g. -12.125>",
+	"TempSensor08": "<Some value in *C, -55..125 to 3 decimals e.g. -12.125>",
+	"FlowSensor01": "<Some value in L, 0..30 to 3 decimals e.g. 2.456>",
+	"FlowSensor02": "<Some value in L, 0..30 to 3 decimals e.g. 2.456>",
+	"AnaStatus01":  "<Some value in %, 0..100 to 3 decimals e.g. 56.356>",
+	"AnaStatus02":  "<Some value in %, 0..100 to 3 decimals e.g. 56.356; also Heatpump output analog and serial(s)>",
+	"BoilerStatus": "<Some value in %, 0..100 to 3 decimals e.g. 56.356>"
+}

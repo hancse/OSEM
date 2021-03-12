@@ -1,0 +1,6 @@
+{
+	"UnitMode":		"<RemoteControl/StandAlone/...>",
+	"AnaValue01":  	"<Some value in %, 0..100 to 3 decimals e.g. 56.356>",
+	"AnaValue02":  	"<Some value in %, 0..100 to 3 decimals e.g. 56.356; also Heatpump output analog and serial(s)>",
+	"BoilerValue": 	"<Some value in %, 0..100 to 3 decimals e.g. 56.356>"
+}
