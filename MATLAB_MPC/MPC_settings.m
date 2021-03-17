@@ -23,6 +23,9 @@ WW_hp = repmat(W_hp,2,1);
 % Weight of the electric heater in the cost function:
 W_elec = 1.* W_pv .* W_cop;
 WW_elec= repmat(W_elec,2,1);
+
+%% 
+load('MPC_controller_object.mat')
 %% 
 global i
 i =0;

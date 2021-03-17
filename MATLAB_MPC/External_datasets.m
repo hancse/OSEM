@@ -19,7 +19,7 @@ Tambient_sim = kron(Tambient,ones(60,1));
 time = 0:60:(24*60*60)-60;
 time=time';
 %% Hot water tapping profile [l/h]:
-DHW = importdata('DHW.txt');
+DHW = importdata('DHW0001_DHW.txt');
 
 
 
