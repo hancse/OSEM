@@ -4,3 +4,4 @@ conda install numpy scipy pandas
 conda install matplotlib
 conda install -bjrn gekko
 conda install paho-mqtt
+conda install pyyaml
