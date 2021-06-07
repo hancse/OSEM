@@ -11,5 +11,6 @@ External_datasets;
 MPC_settings;
 
 %% Simulate the system:
-
-%% Report the results:
+sim('MPC_v02.slx')
+%% visualize the results:
+results;
