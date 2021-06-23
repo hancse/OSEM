@@ -1,0 +1,40 @@
+\section{Storage tank model}
+
+The heat balance equation for one layer of the tank can be written as:
+
+\begin{eqnarray}
+	c_{layer} \cdot \frac{dT_{layer}}{dt} = \dot{Q}_{conduction} + \dot{Q}_{convection} + \dot{Q}_{tapwater} + \dot{Q}_{heating} + \dot{Q}_{heatloss}
+\end{eqnarray}
+
+\subsection{Conduction}
+
+Thermal Law: 
+\begin{eqnarray}
+	\dot{q} = - \lambda \cdot \frac{T_2 - T_1}{\Delta x} \\
+    \text{Heat flux } \dot q  \text{ in } \, [W \cdot m^{-2}] \\
+    \lambda \text{ in } [\frac{ W \cdot m}{m^{-2}\cdot K}] 
+    = [\frac{W}{m \cdot K}]
+\end{eqnarray}	
+
+Thermal conductivity is a material property.
+
+
+Conduction is the heat transfer between adjacent layers in the tank. This can be elaborated for layer 1 as:
+
+\begin{eqnarray}
+	\dot{Q}_1 = (\lambda_{water}\cdot A_{tank} + \lambda_{wall} \cdot A_{wall} )\cdot \frac{T_2 - T_1}{\Delta x}
+\end{eqnarray}
+
+Where $(\lambda_{water} \cdot A_{tank} ) / \Delta x$ is the thermal conductance through the interface with layer 2 in $[Wm/K]$. $\Delta x$ is the length (height) of the layer $[m]$.  For the layers 2 to 4: 
+
+\begin{eqnarray}
+	\dot{Q}_n = (\lambda_{w}\cdot A_{tank} + \lambda_{wall} \cdot A_{wall}) \cdot \frac{T_{n-1} - 2T_n + T_{n+1}}{\Delta x}
+\end{eqnarray}
+
+And finally, for layer 5:
+
+\begin{eqnarray}
+	\dot{Q}_5 = (\lambda_{water}\cdot A_{tank} + \lambda_{wall} \cdot A_{wall}) \cdot \frac{T_4 - T_5}{\Delta x}
+\end{eqnarray} 
+
+\newpage
