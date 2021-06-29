@@ -1,0 +1,190 @@
+\section{Setting up Raspberry Pi}
+
+A Raspberry Pi 4B was received from Contecto. This RPi contains a 16GB SD card with a standard RPi Debian image. Contecto tweaked the settings of the WiFi module, so that it forms an ad-hoc Wifi network with the TinyPico device.
+
+\subsection{Formation of the ad-hoc Wifi network between RPi and TinyPico}
+
+...to be written
+
+\subsection{Getting started with the RPi}
+
+The RPi as delivered is connected to:
+\begin{itemize}
+	\item a computer screen with the included mini-HDMI to HDMI cable
+	\item a USB keyboard
+	\item a USB mouse
+	\item a 230 V mains outlet socket. Use the included wall adapter with a USB-C interface to the RPi. 
+\end{itemize} 
+
+Keep the order of connecting things given above. The RPi will start up immediately upon connecting to the mains voltage.
+
+The RPi comes with the standard device name: \textsf{raspberrypi}, the standard username \textsf{pi} and password-less logging in with complete (sudo) privileges. This is the easiest, but also the most unsafe way of operating a Linux system. Let's do something about it.
+
+Under the Raspberry menu (default location: in the top left corner of the screen) go to \textsf{Preferences $\rightarrow$ Raspberry Pi Configuration}, and open the configuration program.
+
+\begin{itemize}
+	\item on the \textsf{System} tab:
+	\begin{itemize}
+		\item change the hostname to: \textsf{osempi}
+		\item disable the auto-login
+		\item disable the splash screen
+		\item Change Password to \textsf{\#Controller123}
+	\end{itemize}
+	\item on the \textsf{Interfaces} tab:
+		\begin{itemize}
+		\item enable SSH
+		\item enable VNC
+	\end{itemize}
+    \item Reboot (on prompt) and login as user \textsf{pi} with your new password
+\end{itemize}
+
+Then, a Linux operating system needs some maintenance. Open a \textit{Terminal}. \textsf{RPi Menu $\rightarrow$ Accessories $\rightarrow$ Terminal}. Regularly, the following commands have to be carried out in this terminal window:
+\begin{itemize}
+	\item \textsf{sudo apt update}
+	\item \textsf{sudo apt upgrade}
+\end{itemize}
+
+These commands keep the Linux OS fresh and tidy. The \textsf{sudo} in front of the command shows that user \textsf{pi} wants to do an operation that needs system administrator privileges. User \textsf{pi} has these privileges by default, on every RPi in the world. That's why changing the password is the least you should do...
+
+\subsection{Building a network with the RPi}
+
+The RPi as delivered has a WiFi interface which is dedicated to the TinyPico device. The consequence is that the RPi has to connected to your home network with a RJ-45 ethernet cable. The IP address, given to the RPi by the DHCP server of your modem, can not be predicted, but after connecting the cable it can be found by the command:
+\begin{itemize}
+	\item \textsf{ifconfig}
+	\item find the IP address \emph{e.g.} 192.168.178.30 under \textsf{eth0:}
+\end{itemize}
+
+Keep the hostname, username, password and IP address at hand for further use.
+
+\subsection{Connecting the RPi to your PC}
+
+The first time you log in to a new RPi, you have to connect a screen, mouse and keyboard. Once you have enabled the SSH server and VNC server on the RPi, you have three options:
+
+\begin{itemize}
+	\item continue with screen, mouse and keyboard
+	\item use a VNC client on your PC, which connects remotely to the desktop of the RPi. Go to \url{https://www.realvnc.com/en/connect/download/viewer/}  and download VNC Viewer for Windows (OSX, Linux). Install VNC viewer and make a new connection with your RPi. You need the data kept at hand from the previous paragraph. You get the graphical desktop of the RPi as a window on your PC screen. Your PC mouse and keyboard operate on the RPi desktop as well.
+	\item use a terminal connection via SSH. Go to \url{https://www.chiark.greenend.org.uk/~sgtatham/putty/} and download \textsf{putty-64bit-0.xx-installer.msi}. Install it and make a connection to the IP address of your RPi. Note that Putty will provide a RPi Linux Terminal only.
+\end{itemize}
+
+\subsection{Connecting to the RPi from Matlab on your PC }
+
+When you have Matlab on your PC,and the right subscription license, there is an option to connect to the RPi from Matlab.  
+
+\begin{itemize}
+	\item Go to \url{https://nl.mathworks.com/help/supportpkg/raspberrypiio/ug/install-support-for-raspberry-pi-hardware.html}. The recipe given for installing the \textbf{MATLAB Support Package for Raspberry Pi Hardware} is given there. Do not carry out the setup option, offered during installation.
+	\item Check the correct installation in Matlab: Add-Ons $\rightarrow$ Manage Add-Ons.
+	\item In a similar way, install and check the installation of the \textbf{Simulink Support Package for Raspberry Pi Hardware}.
+\end{itemize}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=.8\linewidth]{Pictures/Setup RPi.png}  
+	\caption{}
+	\label{fig:setup}
+\end{figure}
+
+\begin{figure}[ht]
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		% include first image
+		\includegraphics[width=.8\linewidth]{Pictures/Connect RPi 01.png}  
+		\caption{}
+		\label{fig:sub-first}
+	\end{subfigure}
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		% include second image
+		\includegraphics[width=.8\linewidth]{Pictures/Connect RPi 03.png}  
+		\caption{}
+		\label{fig:sub-second}
+	\end{subfigure}
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		% include second image
+		\includegraphics[width=.9\linewidth]{Pictures/Connect RPi 04.png}  
+		\caption{}
+		\label{fig:sub-third}
+	\end{subfigure}
+	\newline
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		% include first image
+		\includegraphics[width=.9\linewidth]{Pictures/Connect RPi 05.png}  
+		\caption{}
+		\label{fig:sub-fourth}
+	\end{subfigure}
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		% include second image
+		\includegraphics[width=.9\linewidth]{Pictures/Connect RPi 06.png}  
+		\caption{}
+		\label{fig:sub-fifth}
+	\end{subfigure}
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		% include second image
+		\includegraphics[width=.9\linewidth]{Pictures/Connect RPi 08.png}  
+		\caption{}
+		\label{fig:sub-sixth}
+	\end{subfigure}
+	\newline
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		% include second image
+		\includegraphics[width=.9\linewidth]{Pictures/Connect RPi 09.png}  
+		\caption{}
+		\label{fig:sub-seventh}
+	\end{subfigure}
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		% include second image
+		\includegraphics[width=.9\linewidth]{Pictures/Connect RPi 10.png}  
+		\caption{}
+		\label{fig:sub-eighth}
+	\end{subfigure}
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		% include second image
+		\includegraphics[width=.9\linewidth]{Pictures/Connect RPi 11.png}  
+		\caption{}
+		\label{fig:sub-ninth}
+	\end{subfigure}
+	\caption{Setup of connection to Raspberry Pi in Matlab environment}
+	\label{fig:fig}
+\end{figure}
+
+After the installation of the two Support Packages, keep the Add-On manager Window of Matlab open and click the Settings symbol (cogwheel) of the Matlab Support Package (see Fig. \ref{fig:setup}). In the setup procedure a connection with the RPi is established, and then a number of Linux packages will be installed on the RPi. (see Fig. \ref{fig:fig}) It is important to check "Customize..."in the dialog of Fig. \ref{fig:sub-first}. Then the Matlab softwae is \emph{added} to the SD card of the RPi, and this card is not overwritten, as will happen when the first option in Fig. \ref{fig:sub-first} is chosen.
+
+A similar procedure can be followed for the Simulink Support package. It may be that the setup for both Matlab and Simulink is identical. We will find out if the Simulink setup is necessary or not after the Matlab setup has been carried out already.
+
+See also: \cite{RPi_1, RPi_Connecting, RPi_Getting_Started} \url{https://nl.mathworks.com/videos/install-the-matlab-support-package-for-raspberry-pi-94266.html}
+
+\textbf{Note:} after reboot following the setup dialog of the Support Package, the VNC server seems to be unreachable from the PC.
+Disabling the VNC server, reboot of the RPi, re-enabling the VNC server and rebooting the RPi again seems to remedy this Matlab mayhem. The connection on the PC in the VNC client has to be deleted, and a new connection to the RPi has to be created. Then the VNC connection works again.
+
+\subsection{Deployment of Open Source Controller on the Raspberry Pi}
+
+After installation of the Matlab and Simulink Support packages for the Raspberry Pi, a Matlab function can be "translated" into an executable (*.elf) program for the ARM processor of the RPi, downloaded to the RPi and executed (deployed) on the RPi. This can be done from the Windows Matlab environment, as shown in \cite{RPi_2, RPi_Deploying, RPi_Target}:
+
+\url{https://nl.mathworks.com/videos/deploy-matlab-algorithms-on-raspberry-pi-1591965724601.html}
+
+\subsubsection{Converting the OSEM Matlab MPC script into a function}
+
+... to be written
+
+\subsubsection{Deploying the OSEM MPC function on the RPi}
+
+... to be written
+
+\subsubsection{Running the MPC program on the RPi as an executable in the Linux terminal}
+
+...to be written
+
+\subsection{Adding MQTT communication from the RPi to the TinyPico}
+
+... to be written
+
+
+
+
+
