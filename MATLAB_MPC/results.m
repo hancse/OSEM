@@ -1,4 +1,10 @@
-%%
+%% Plotting the simulation results:
+
+%% 
+figure(1)
+
+
+
 T_ambient= out.logsout{1}.Values.Data;
 SP_comp = out.logsout{2}.Values.Data ;
 SP_elec = out.logsout{3}.Values.Data ;
@@ -42,3 +48,16 @@ xlabel('Time [s]')
 ylabel('Setpoint [x 100%]')
 legend('Heat pump compressor','Electric heater')
 grid on
+%%
+figure()
+plot(time, T_ambient_sim)
+xlabel('Time [s]')
+ylabel('Ambient Temperature [C]')
+grid on
+%%
+figure()
+plot(time, Tambient_sim)
+xlabel('Time [s]')
+ylabel('Ambient Temperature [C]')
+grid on
+%%
