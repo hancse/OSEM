@@ -2,62 +2,44 @@
 
 %% 
 figure(1)
+title('Datasets used in SImulation')
+subplot(3,1,1)
+plot(T_ambient(:,1),T_ambient(:,2))
+xlabel('Time')
+ylabel('Ambient temperature [C]')
+grid on
+subplot(3,1,2)
+plot(time, G_sim)
+xlabel('Time')
+ylabel('Global Irradiation [W/m^2]')
+grid on
+subplot(3,1,3)
+plot(DHW(:,1),DHW(:,2))
+xlabel('Time')
+ylabel('DHW demand [Kg/s]')
+set(gca,'XTickLabel',['0  ';'100'])
 
-
-
-T_ambient= out.logsout{1}.Values.Data;
-SP_comp = out.logsout{2}.Values.Data ;
-SP_elec = out.logsout{3}.Values.Data ;
-COP_logged = out.logsout{4}.Values.Data;
-% out.logsout{5}.Values.Data =  
-% out.logsout{6}.Values.Data =
-T3= out.logsout{7}.Values.Data;
-T4= out.logsout{8}.Values.Data;
-T5= out.logsout{9}.Values.Data ;
-T1= out.logsout{10}.Values.Data;
-T2= out.logsout{11}.Values.Data ;
-DHW_logged= out.logsout{12}.Values.Data;
-% %%
-% figure(1)
-% plot(out.tout,T_ambient)
-% xlabel('Time [s]')
-% ylabel('Ambient Temperature [C]')
-% legend('Ambient Temperature')
-% grid on
-% %%
-% figure(2)
-% plot(out.tout,DHW_logged)
-% xlabel('Time [s]')
-% ylabel('DHW demand [Kg/s]')
-% legend('DHW')
-% grid on
+grid on
+%%
+figure(2)
+title('Temperature profile in the tank')
+plot(T1(:,1),T1(:,2))
+hold on
+plot(T2(:,1),T2(:,2))
+plot(T3(:,1),T3(:,2))
+plot(T4(:,1),T4(:,2))
+plot(T5(:,1),T5(:,2))
+grid on
+legend('T_1','T_2','T_3','T_4','T_5')
+xlabel('Time')
+ylabel('Temperature [C]')
 %%
 figure(3)
-plot(out.tout,T1, out.tout,T2,out.tout,T3,...
-    out.tout,T4,out.tout,T5)
-xlabel('Time [s]')
-ylabel('Temperature [C]')
-legend('T1','T2','T3','T4','T5')
-grid on
-%%
-figure(4)
-plot(SP_comp)
+title('Actuators setpoints')
+plot(SP_comp(:,1),SP_comp(:,2))
 hold on
-plot(SP_elec)
-xlabel('Time [s]')
-ylabel('Setpoint [x 100%]')
-legend('Heat pump compressor','Electric heater')
+plot(SP_elec(:,1),SP_elec(:,2))
+xlabel('time')
+ylabel('Set Point [x 100%]')
+legend('Heat Pump','ELectric Heater')
 grid on
-%%
-figure()
-plot(time, T_ambient_sim)
-xlabel('Time [s]')
-ylabel('Ambient Temperature [C]')
-grid on
-%%
-figure()
-plot(time, Tambient_sim)
-xlabel('Time [s]')
-ylabel('Ambient Temperature [C]')
-grid on
-%%
