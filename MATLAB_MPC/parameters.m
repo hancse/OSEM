@@ -15,7 +15,7 @@ lambda_w = 0.591;
 N=5;
 % Temperature of cold inlet water [C]:
 T_cold = 10;
-% Heat capacit yof a single element (including water and wall [J/K]:
+% Heat capacity of a single element (including water and wall [J/K]:
 Ce = 191400;
 % Heat conductivity [W m/K]:
 UA = 0.2072;

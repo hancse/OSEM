@@ -2,8 +2,10 @@
 % This script does the following:
 % 1) Loads the physical parameters of the heat pump and the tank.
 
-% 2) Loads the external datastets required for simulation, namely global solar
-% irradiation (KNMI), ambient temperature (KNMI) and the DHW usage profile (university of Kessel).
+% 2) Loads the external datastets required for simulation, namely:
+    % global solar rradiation (KNMI).
+    % ambient temperature (KNMI).
+    % DHW usage profile (European Directive).
 
 % 3) Design of the MPC controller.
 
