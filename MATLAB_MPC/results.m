@@ -22,24 +22,28 @@ set(gca,'XTickLabel',['0  ';'100'])
 grid on
 %%
 figure(2)
+tt = 0:minutes(10):minutes(1440);
+
 title('Temperature profile in the tank')
-plot(T1(:,1),T1(:,2))
+plot(tt,sensors(:,1))
 hold on
-plot(T2(:,1),T2(:,2))
-plot(T3(:,1),T3(:,2))
-plot(T4(:,1),T4(:,2))
-plot(T5(:,1),T5(:,2))
-grid on
-legend('T_1','T_2','T_3','T_4','T_5')
-xlabel('Time')
+plot(tt,sensors(:,2))
+plot(tt,sensors(:,3))
+plot(tt,sensors(:,4))
+plot(tt,sensors(:,5))
+xlabel('Time [HH:MM]')
 ylabel('Temperature [C]')
+xtickformat('hh:mm')
+grid on
+grid minor
+legend('T_1','T_2','T_3','T_4','T_5')
+hold off
 %%
 figure(3)
 title('Actuators setpoints')
-plot(SP_comp(:,1),SP_comp(:,2))
-hold on
-plot(SP_elec(:,1),SP_elec(:,2))
-xlabel('time')
+plot(tt, Actuator(:,1),tt,Actuator(:,2)))
+xlabel('Time [HH:MM]')
 ylabel('Set Point [x 100%]')
 legend('Heat Pump','ELectric Heater')
 grid on
+grid minor

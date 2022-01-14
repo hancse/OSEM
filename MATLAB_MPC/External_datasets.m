@@ -72,7 +72,6 @@ plot(t,DHW)
 xlabel('Time [HH:MM]')
 ylabel('DHW draw-offs [l/min]')
 xtickformat('hh:mm')
-xtickformat('hh:mm')
 grid on
 grid minor
 
