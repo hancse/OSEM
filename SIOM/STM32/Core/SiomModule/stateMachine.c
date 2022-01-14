@@ -20,6 +20,7 @@ extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim6;
 extern TIM_HandleTypeDef htim7;
 extern DAC_HandleTypeDef hdac1;
+extern UART_HandleTypeDef huart2;
 
 void pollTemperature()
 {
@@ -96,7 +97,7 @@ void pollOutputs()
 
 	if (SIOM_OldInput.expansionBoardHeaterOutput != SIOM_Input.expansionBoardHeaterOutput)
 	{
-		if (SIOM_Input.expansionBoardHeaterOutput == 0)
+		if (SIOM_Input.expansionBoardHeaterOutput == 1)
 		{
 			// Turn off
 			HAL_GPIO_WritePin(BOILER_CONTROL_GPIO_Port, BOILER_CONTROL_Pin, GPIO_PIN_SET);
@@ -286,5 +287,48 @@ void pollInputs()
 				timer2Running = 0;
 			}
 		}
+	}
+}
+
+uint8_t switchToGatewayMode[] = {'G', 'W', '=', '1', '\r'};
+uint8_t changeTemperatureSetpoint1[] = {'M', 'M', '=',  0x00, '.', '0', '\r'};
+uint8_t changeTemperatureSetpoint10[] = {'M', 'M', '=',  0x00, 0x00, '.', '0', '\r'};
+uint8_t changeTemperatureSetpoint100[] = {'M', 'M', '=',  '1', '0', '0', '.', '0', '\r'};
+
+enum e_enumTemperatureSetpoint_t{
+	ENUM_TEMP_SP_INDEX_LOW = 3,
+	ENUM_TEMP_SP_INDEX_HIGH = 4
+};
+
+void pollCommunication()
+{
+	static uint32_t index = 0;
+	switch(index)
+	{
+	case(0):
+		HAL_UART_Transmit(&huart2, switchToGatewayMode, sizeof(switchToGatewayMode), 10);
+		index++;
+		break;
+	default:
+		if(SIOM_OldInput.expansionBoardAnalogOutput != SIOM_Input.expansionBoardAnalogOutput)
+		{
+			if(SIOM_Input.expansionBoardAnalogOutput < 10)
+			{
+				changeTemperatureSetpoint1[ENUM_TEMP_SP_INDEX_LOW] = (SIOM_Input.expansionBoardAnalogOutput + 0x30);
+				HAL_UART_Transmit(&huart2, changeTemperatureSetpoint1, sizeof(changeTemperatureSetpoint1), 10);
+			}
+			else if (SIOM_Input.expansionBoardAnalogOutput >= 100)
+			{
+				HAL_UART_Transmit(&huart2, changeTemperatureSetpoint100, sizeof(changeTemperatureSetpoint100), 10);
+			}
+			else
+			{
+				changeTemperatureSetpoint10[ENUM_TEMP_SP_INDEX_HIGH] = ((SIOM_Input.expansionBoardAnalogOutput % 10) + 0x30);
+				changeTemperatureSetpoint10[ENUM_TEMP_SP_INDEX_LOW]  = ((SIOM_Input.expansionBoardAnalogOutput / 10) + 0x30);
+				HAL_UART_Transmit(&huart2, changeTemperatureSetpoint10, sizeof(changeTemperatureSetpoint10), 10);
+			}
+			SIOM_OldInput.expansionBoardAnalogOutput = SIOM_Input.expansionBoardAnalogOutput;
+		}
+		break;
 	}
 }
