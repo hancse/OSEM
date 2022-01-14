@@ -20,22 +20,29 @@ class MqttCommunication:
         self.password = "[q<9LGSy4["
         self.mqtt_server = "192.168.4.1"
         self.client_id = ubinascii.hexlify(machine.unique_id())
-        self.topic_subscribe = "mosquitto_sub"
-        self.topic_publish = "mosquitto_pub"
+        self.topics_subscribed = []
+        self.topics_published = []
         self.lastMessage = ""
         self.dataAvailable = 0
         self.client = MQTTClient(self.client_id, self.mqtt_server, port=1883)
         self.connectionStatus = 0
 
+    def subscribeToTopic(self, topic):
+        self.topics_subscribed.append(topic)
+        self.client.subscribe(topic, 0)
+        print("Subscribed to " + topic)
+
+    def publishToTopic(self, topic):
+        self.topics_published.append(topic)
+        print("Publish to " + topic)
+
     def subscribedCallback(self, topic, msg):
-        print((str(topic) + str(msg)))
-        print(self.topic_subscribe)
-        if topic.decode() == self.topic_subscribe:
-            print("Received message: " + msg.decode())
-            self.lastMessage = msg.decode()
-            self.dataAvailable = 1
-        else:
-            print("else state")
+        print("Received message: " + (str(topic, "utf-8") + str(msg, "utf-8")))
+        for topic_ in self.topics_subscribed:
+            if str(topic, "utf-8") == topic_:
+                self.lastMessage = (str(topic, "utf-8") + str(msg, "utf-8"))
+                self.dataAvailable = 1
+
 
     def subscribedDataAvailable(self):
         if self.connectionStatus == 1:
@@ -62,10 +69,7 @@ class MqttCommunication:
 
         self.client.set_callback(self.subscribedCallback)
         self.client.connect()
-        print("subscribing to: " + self.topic_subscribe)
-        self.client.subscribe(self.topic_subscribe)
-        print("Connected to %s MQTT broker, " % self.mqtt_server)
-        print("subscribed to %s topic" % self.topic_subscribe)
+
         self.connectionStatus = 1
         return 0
 
@@ -73,6 +77,7 @@ class MqttCommunication:
         self.connectionStatus = 0
         self.station.disconnect()
 
-    def writeMqtt(self, message):
+    def writeMqtt(self,topic, message):
         if self.connectionStatus == 1:
-            self.client.publish(self.topic_publish, message)
+
+            self.client.publish(topic, message)
