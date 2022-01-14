@@ -1,141 +1,164 @@
+import tkinter
 from tkinter import *
 # import mqttCommunication
 import pahoMqtt
 import json
 
 ### MQTT definitions ###
-subscribtionTopic = "mosquitto_pub"
-publishTopic = "mosquitto_sub"
+published_topics = [
+    ("valve1", "Valve 1", 0, 100),
+    ("valve2", "Valve 2", 0, 100),
+    ("boiler", "Boiler", 0, 100),
+    ("heatpump", "Heatpump", 0, 1),
+]
+
+subscribed_topics = [
+    ("temp1", "Temperature 1"),
+    ("temp2", "Temperature 2"),
+    ("temp3", "Temperature 3"),
+    ("temp4", "Temperature 4"),
+    ("temp5", "Temperature 5"),
+    ("temp6", "Temperature 6"),
+    ("temp7", "Temperature 7"),
+    ("temp8", "Temperature 8"),
+    ("flow1", "Flow 1"),
+    ("flow2", "Flow 2"),
+    ("analogstate1", "Analog state 1"),
+    ("analogstate2", "Analog state 2"),
+    ("heatpumpstate", "Heat pump state"),
+    ("boilerstate", "Boiler state"),
+]
+
+subDataList = []
+pubDataList = []
+
+
+class subData():
+    def __init__(self, name, topic):
+        self.name = name
+        self.topic = topic
+        self.value = ''
+        self.labelName = "pubLabel_" + topic
+        self.valueName = "val_" + topic
+
+    def createLabelField(self, vertical):
+        self.labelname = Label(win, text=globals()[className].name).grid(column=0, row=vertical, sticky='w')
+
+    def createValueField(self, vertical):
+        self.valuename = Label(win, text=self.value).grid(column=1, row=vertical, sticky='w')
+
+    def setValue(self, value):
+        self.value = value
+        self.valuename = Label(win, text=self.value).grid(column=1, row=sub_fieldnames.index(self.name), sticky='w')
+
+
+class pubData():
+    def __init__(self, name, topic):
+        self.buttonName = "button_" + topic
+        self.labelName = "pubLabel_" + topic
+        self.valueName = "val_" + topic
+        self.name = name
+        self.topic = topic
+        self.value = IntVar()
+
+
+    def createLabelField(self, vertical):
+        self.labelname = Label(win, text=self.name).grid(column=0,
+                                                        row=vertical,
+                                                        sticky='w')
+    def createScaleField(self, vertical, min, max):
+        self.valuename = Scale(win, orient=tkinter.HORIZONTAL, from_=min, to=max,
+                                           variable=self.value).grid(column=1, row=vertical, sticky='w')
+
+    def createPublishButton(self, vertical):
+        self.buttonname = Button(win, text="Publish", command=self.publishData).grid(
+            column=2,
+            row=vertical,
+            sticky='w')
+
+    def publishData(self):
+        out = self.value.get()
+        print(out)
+        mqtt.writeMqtt(self.topic, str(out))
+
+
+sub_topics, sub_fieldnames = zip(*subscribed_topics)
+pub_topics, pub_fieldnames, pub_min, pub_max = zip(*published_topics)
+
 mqtt = pahoMqtt.pahoMqttCommunication()
 
 ### GUI definitions ###
-win  = Tk()
+win = Tk()
 win.title("Test application HAN SIOM")
-win.geometry("750x900")
+win.geometry("800x600")
+
 
 ### Event functions ###
-def buttonClick():
-    # do stuff
-    value1 = 0
-    value2 = 0
-    value3 = 0
-    value4 = 0
-    try:
-        analaogOut = int(En_analogOutput.get())
-        if analaogOut <= 100 and analaogOut >= 0:
-            En_analogOutput.configure({"background":"green"})
-            value1 = 1;
-        else:
-            En_analogOutput.configure({"background":"red"})
-    except:
-         En_analogOutput.configure({"background":"red"})
-    
-    try:
-        heaterOut = int(En_HeaterOutput.get())
-        if heaterOut <= 1 and heaterOut >= 0:
-            En_HeaterOutput.configure({"background":"green"})
-            value2 = 1;
-        else:
-            En_HeaterOutput.configure({"background":"red"})
-    except:
-        En_HeaterOutput.configure({"background":"red"})
-    
-    try:        
-        valve1Out = int(En_Valve1Output.get())
-        if valve1Out <= 100 and valve1Out >= 0:
-            En_Valve1Output.configure({"background":"green"})
-            value3 = 1;
-        else:
-            En_Valve1Output.configure({"background":"red"}) 
-    except:
-         En_Valve1Output.configure({"background":"red"})   
-    
-    try:
-        valve2Out = int(En_Valve2Output.get())
-        if valve2Out <= 100 and valve2Out >= 0:
-            En_Valve2Output.configure({"background":"green"})
-            value4 = 1;
-        else:
-            En_Valve2Output.configure({"background":"red"})  
-    except:
-        En_Valve2Output.configure({"background":"red"})    
-    
-    if value1 == 1 and value2 == 1 and value3 == 1 and value4 ==1:    
-        MqttPublishWindow.insert(END, "Output >>\nHeatpump output: " + En_analogOutput.get() + "\nBoiler output: " + En_HeaterOutput.get() + "\nValve 1 output: " + En_Valve1Output.get() + "\nValve 2 output: " + En_Valve2Output.get() + "\n")    
-        jsonMessage = {
-            "unitMode": "RemoteControlled",
-            "AnaValue01": En_Valve1Output.get(),
-            "AnaValue02": En_Valve2Output.get(),
-            "HeatpumpOut": En_analogOutput.get(),
-            "BoilerValue": En_HeaterOutput.get()
-            }
-        mqtt.writeMqtt(json.dumps(jsonMessage))
-    
+
 def mqttSubscribe():
-    MqttSubscribeWindow.insert(END, "Subscribing to MQTT topic: " + subscribtionTopic + " : ")    
-    MqttPublishWindow.insert(END, "Publish to MQTT topic: " + publishTopic + " : ")
     mqttSetup = mqtt.initiateConnection()
     if mqttSetup == -1:
-        MqttSubscribeWindow.insert(END, "Failed\n")
+        print("Fail")
     else:
-        MqttSubscribeWindow.insert(END, "Succeeded\n")
+        print("succes")
 
-def clear():
-    MqttSubscribeWindow.delete(1.0, END)
-    MqttPublishWindow.delete(1.0, END)
-    MqttSubscribeWindow.insert(END, "Subscribing to MQTT topic: " + subscribtionTopic + " : ")
-    MqttPublishWindow.insert(END, "Publish to MQTT topic: " + publishTopic + " : ")
+    for topic in sub_topics:
+        mqtt.appendTopics(topic)
+
+    mqtt.subscribeToTopics()
 
 def close():
     mqtt.closeConnection()
     win.destroy()
-    
+
+
 def checkData():
-        # stuff in loop
+    # stuff in loop
     if mqtt.subscribedDataAvailable() == 1:
-        MqttSubscribeWindow.insert(END, mqtt.getSubscribedData() + "\n")
+
+        for c in subDataList:
+            if c.topic in mqtt.lastMessage:
+                length = len(c.topic)
+                string_value = mqtt.lastMessage
+                value = string_value[length:len(string_value)]
+                int_value = int(value)
+                c.setValue(int_value)
+
+
     win.after(100, checkData)
-    
+
+    classname = 'c_temp1'
+
+
+
 ### Widgets ###
-MqttSubscribeWindow = Text(win, width=60, height=20)
-MqttSubscribeWindow.pack(pady=20)
-MqttPublishWindow = Text(win, width=60, height=20)
-MqttPublishWindow.pack(pady=20)
+mqttSubscribe()
+win.columnconfigure(0, weight=1)
+win.columnconfigure(1, weight=1)
+win.columnconfigure(2, weight=1)
 
-ButtonFrame = Frame(win)
-ButtonFrame.pack()
+for field in sub_fieldnames:
+    variable = sub_topics[sub_fieldnames.index(field)]
+    className = "c_" + variable
+    globals()[className] = (subData(name=field, topic=variable))
+    globals()[className].createLabelField(vertical=sub_fieldnames.index(field))
+    globals()[className].createValueField(vertical=sub_fieldnames.index(field))
+    subDataList.append(globals()[className])
 
-PublishButton = Button(ButtonFrame, text="Publish", command=buttonClick)
-PublishButton.grid(row=0, column=0)
-SubscribeButton = Button(ButtonFrame, text="Subscribe", command=mqttSubscribe)
-SubscribeButton.grid(row=0, column=1, padx=20)
-ClearButton = Button(ButtonFrame, text="Clear", command=clear)
-ClearButton.grid(row=0, column=2, padx=20)
 
-Lb_Valve1Output = Label(ButtonFrame, text="Valve 1 output\n0-100%")
-Lb_Valve1Output.grid(row=2, column=0)
-En_Valve1Output = Entry(ButtonFrame)
-En_Valve1Output.grid(row=3, column=0)
-
-Lb_Valve2Output = Label(ButtonFrame, text="Valve 2 output\n0-100%")
-Lb_Valve2Output.grid(row=2, column=1)
-En_Valve2Output = Entry(ButtonFrame)
-En_Valve2Output.grid(row=3, column=1)
-
-Lb_AnalogOutput = Label(ButtonFrame, text="Heatpump output\n0-100%")
-Lb_AnalogOutput.grid(row=2, column=2)
-En_analogOutput = Entry(ButtonFrame)
-En_analogOutput.grid(row=3, column=2)
-
-Lb_HeaterOutput = Label(ButtonFrame, text="Boiler output\n0-1")
-Lb_HeaterOutput.grid(row=2, column=3)
-En_HeaterOutput = Entry(ButtonFrame)
-En_HeaterOutput.grid(row=3, column=3)
-
+for field in pub_fieldnames:
+    variable = pub_topics[pub_fieldnames.index(field)]
+    min = pub_min[pub_fieldnames.index(field)]
+    max = pub_max[pub_fieldnames.index(field)]
+    className = "c_" + variable
+    vertical = (pub_fieldnames.index(field)) + len(sub_fieldnames)
+    globals()[className] = (pubData(name=field, topic=variable))
+    globals()[className].createLabelField(vertical)
+    globals()[className].createScaleField(vertical, min, max)
+    globals()[className].createPublishButton(vertical)
 
 # x button handle
-win.protocol("WM_DELETE_WINDOW", close)  # close screen 
+win.protocol("WM_DELETE_WINDOW", close)  # close screen
 
 checkData()
-win.mainloop()       
-
+win.mainloop()
