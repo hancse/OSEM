@@ -25,63 +25,31 @@ These topics are the following:
 The TinyPcio communicatie with the Raspberry Pi via 2 topics, data send over these topics holds the following structure:
 
 TinyPico input data (From Raspberry Pi to TinyPcio) >> Receive on interrupt base
-Data layout exampls:
-heatpump1
-Topic value: 1
- 
-valve22
-Topic value: 2
- 
-valve22
-Topic value: 2
- 
-valve13
-Topic value: 3
-
+Data layout exampls (Basic text layout):
+heatpump1            >> results in Topic value: 1
+valve22              >> results in Topic value: 2 
+valve22              >> results in Topic value: 2
+valve13              >> results in Topic value: 3    
 
 
 TinyPico output data (From TinyPico to Raspberry Pi) >> Send every second as poll function
 Data layout exampls:
-temp17
-Topic value: 7
+          
  
-temp25
-Topic value: 5
- 
-temp33
-Topic value: 3
- 
-temp49
-Topic value: 9
- 
-temp56
-Topic value: 6
- 
-temp61
-Topic value: 1
- 
-temp75
-Topic value: 5
- 
-temp88
-Topic value: 8
- 
-flow10
-Topic value: 0
- 
-flow21
-Topic value: 1
- 
-analogstate19
-Topic value: 9
- 
-analogstate29
-Topic value: 9
- 
-Heatpumpstate2
-Topic value: 2
- 
-Boilerstate3
-Topic value: 3
- 
+Reading inputs (JSON data format)
+{ temp1 : 7 }        >> results in temperature 1 value: 7
+{ temp2 : 5 }        >> results in temperature 2 value: 5
+{ temp3 : 3 }        >> results in temperature 3 value: 3
+{ temp4 : 9 }        >> results in temperature 4 value: 9
+{ temp5 : 6 }        >> results in temperature 5 value: 6
+{ temp6 : 1 }        >> results in temperature 6 value: 1
+{ temp7 : 5 }        >> results in temperature 7 value: 5
+{ temp8 : 8 }        >> results in temperature 8 value: 8
+{ flow1: 0 }         >> results in flow1 value: 0
+{ flow2 : 1 }        >> results in flow2 value: 1
+{ analogstate1: 9 }  >> results in analogstate1 value: 9
+{ analogstate2: 9 }  >> results in analogstate2 value: 9
+{ Heatpumpstate: 2 } >> results in Heatpumpstate value: 2
+{ Boilerstate: 3 }   >> results in Boilerstate value: 3
+
 All topics are fully lowercase
