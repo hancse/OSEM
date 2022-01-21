@@ -8,8 +8,8 @@ import json
 published_topics = [
     ("valve1", "Valve 1", 0, 100),
     ("valve2", "Valve 2", 0, 100),
-    ("boiler", "Boiler", 0, 100),
-    ("heatpump", "Heatpump", 0, 1),
+    ("boiler", "Boiler", 0, 1),
+    ("heatpump", "Heatpump", 0, 100),
 ]
 
 subscribed_topics = [
@@ -77,9 +77,11 @@ class pubData():
             sticky='w')
 
     def publishData(self):
-        out = self.value.get()
+        out = {
+            self.topic: self.value.get()
+        }
         print(out)
-        mqtt.writeMqtt(self.topic, str(out))
+        mqtt.writeMqtt(self.topic, json.dumps(out))
 
 
 sub_topics, sub_fieldnames = zip(*subscribed_topics)
@@ -118,11 +120,8 @@ def checkData():
 
         for c in subDataList:
             if c.topic in mqtt.lastMessage:
-                length = len(c.topic)
-                string_value = mqtt.lastMessage
-                value = string_value[length:len(string_value)]
-                int_value = int(value)
-                c.setValue(int_value)
+                y = json.loads(mqtt.lastMessage)
+                c.setValue(y[c.topic])
 
 
     win.after(100, checkData)
