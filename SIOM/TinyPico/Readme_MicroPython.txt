@@ -33,23 +33,20 @@ valve13              >> results in Topic value: 3
 
 
 TinyPico output data (From TinyPico to Raspberry Pi) >> Send every second as poll function
-Data layout exampls:
-          
- 
-Reading inputs (JSON data format)
-{ temp1 : 7 }        >> results in temperature 1 value: 7
-{ temp2 : 5 }        >> results in temperature 2 value: 5
-{ temp3 : 3 }        >> results in temperature 3 value: 3
-{ temp4 : 9 }        >> results in temperature 4 value: 9
-{ temp5 : 6 }        >> results in temperature 5 value: 6
-{ temp6 : 1 }        >> results in temperature 6 value: 1
-{ temp7 : 5 }        >> results in temperature 7 value: 5
-{ temp8 : 8 }        >> results in temperature 8 value: 8
-{ flow1: 0 }         >> results in flow1 value: 0
-{ flow2 : 1 }        >> results in flow2 value: 1
-{ analogstate1: 9 }  >> results in analogstate1 value: 9
-{ analogstate2: 9 }  >> results in analogstate2 value: 9
-{ Heatpumpstate: 2 } >> results in Heatpumpstate value: 2
-{ Boilerstate: 3 }   >> results in Boilerstate value: 3
+Data layout exampls  (JSON data format):     
+{ temp1 : 7 }        >> results in Topic value: 7
+{ temp2 : 5 }        >> results in Topic value: 5
+{ temp3 : 3 }        >> results in Topic value: 3
+{ temp4 : 9 }        >> results in Topic value: 9
+{ temp5 : 6 }        >> results in Topic value: 6
+{ temp6 : 1 }        >> results in Topic value: 1
+{ temp7 : 5 }        >> results in Topic value: 5
+{ temp8 : 8 }        >> results in Topic value: 8
+{ flow1: 0 }         >> results in Topic value: 0
+{ flow2 : 1 }        >> results in Topic value: 1
+{ analogstate1: 9 }  >> results in Topic value: 9
+{ analogstate2: 9 }  >> results in Topic value: 9
+{ Heatpumpstate: 2 } >> results in Topic value: 2
+{ Boilerstate: 3 }   >> results in Topic value: 3
 
 All topics are fully lowercase
