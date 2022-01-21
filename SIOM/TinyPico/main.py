@@ -47,8 +47,8 @@ def transmit_input_values(mqtt_instance, topics, variables, names):
         variable = variables[topics.index(topic)]
         name = names[topics.index(topic)]
         variable_name = getattr(memory, variable, "temperature_1")
-        outString = name + str(variable_name)
-        mqtt_instance.writeMqtt(topic, str(outString))
+        outString = {name: variable_name}
+        mqtt_instance.writeMqtt(topic, json.dumps(outString))
     return
 
 
