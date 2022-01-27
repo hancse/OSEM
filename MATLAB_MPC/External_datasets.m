@@ -45,6 +45,8 @@ DHW((19*60)+0)=3;
 DHW((20*30)+30)=4;
 DHW((21*30)+15)=3;
 DHW((21*60)+30)=4;
+
+DHW=DHW.*2;
 %% Generate plots
 t = 0:minutes(1):minutes(1439);
 t=t';
@@ -74,9 +76,7 @@ ylabel('DHW draw-offs [l/min]')
 xtickformat('hh:mm')
 grid on
 grid minor
-
-
-
+%%
 
 
 

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Sensor_actuator_interface'.
  *
- * Model version                  : 2.33
+ * Model version                  : 2.35
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Fri Jan 14 15:44:24 2022
+ * C/C++ source code generated on : Thu Jan 20 22:41:16 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -20,7 +20,6 @@
 #ifndef RTW_HEADER_Sensor_actuator_interface_h_
 #define RTW_HEADER_Sensor_actuator_interface_h_
 #include <math.h>
-#include <stdio.h>
 #include <float.h>
 #include <stddef.h>
 #ifndef Sensor_actuator_interface_COMMON_INCLUDES_
@@ -83,11 +82,10 @@
 /* Block signals (default storage) */
 typedef struct {
   uint8_T Topic[128];
-  real_T b_varargout_2[8];
-  char_T ToString[256];                /* '<Root>/To String' */
-  real_T MQTTSubscribe7_o2;            /* '<Root>/MQTT Subscribe7' */
+  real_T MQTTSubscribe7_o2[2];         /* '<Root>/MQTT Subscribe7' */
+  real_T MQTTSubscribe6_o2[2];         /* '<Root>/MQTT Subscribe6' */
   uint8_T MQTTSubscribe7_o1;           /* '<Root>/MQTT Subscribe7' */
-  int8_T DataTypeConversion[8];        /* '<Root>/Data Type Conversion' */
+  uint8_T MQTTSubscribe6_o1;           /* '<Root>/MQTT Subscribe6' */
   int8_T MQTTPublish1;                 /* '<Root>/MQTT Publish1' */
   int8_T MQTTPublish;                  /* '<Root>/MQTT Publish' */
 } B_Sensor_actuator_interface_T;
@@ -100,7 +98,7 @@ typedef struct {
   codertarget_linux_blocks_MQTT_T obj_p4;/* '<Root>/MQTT Subscribe6' */
   struct {
     void *AQHandles;
-  } TAQSigLogging_InsertedFor_DataT;   /* synthesized block */
+  } TAQSigLogging_InsertedFor_MQTTS;   /* synthesized block */
 
   struct {
     void *LoggedData;
@@ -108,7 +106,19 @@ typedef struct {
 
   struct {
     void *AQHandles;
-  } TAQSigLogging_InsertedFor_ToStr;   /* synthesized block */
+  } TAQSigLogging_InsertedFor_MQT_o;   /* synthesized block */
+
+  struct {
+    void *AQHandles;
+  } TAQSigLogging_InsertedFor_MQT_i;   /* synthesized block */
+
+  struct {
+    void *LoggedData;
+  } ToWorkspace1_PWORK;                /* '<Root>/To Workspace1' */
+
+  struct {
+    void *AQHandles;
+  } TAQSigLogging_InsertedFor_MQ_oy;   /* synthesized block */
 
   struct {
     void *AQHandles;
@@ -116,15 +126,7 @@ typedef struct {
 
   struct {
     void *AQHandles;
-  } TAQSigLogging_InsertedFor_MQT_o;   /* synthesized block */
-
-  struct {
-    void *AQHandles;
-  } TAQSigLogging_InsertedFor_MQTTS;   /* synthesized block */
-
-  struct {
-    void *AQHandles;
-  } TAQSigLogging_InsertedFor_MQT_i;   /* synthesized block */
+  } TAQSigLogging_InsertedFor_MQ_o5;   /* synthesized block */
 } DW_Sensor_actuator_interface_T;
 
 /* Parameters (default storage) */
@@ -132,7 +134,7 @@ struct P_Sensor_actuator_interface_T_ {
   real_T Constant_Value;               /* Expression: 80
                                         * Referenced by: '<Root>/Constant'
                                         */
-  real_T Constant1_Value;              /* Expression: 1
+  real_T Constant1_Value;              /* Expression: 0
                                         * Referenced by: '<Root>/Constant1'
                                         */
 };

@@ -28,6 +28,6 @@ tau = 10;
 % temperature surrounding the tank [C]:
 T_outside = 20;
 %% Initial temperatures in the tank layers:
-T0 = 10;
+T0 = 30;
 % temperature setpoints:
 Tref = [50 50 40 30 20];

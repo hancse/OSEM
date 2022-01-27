@@ -1,9 +1,9 @@
 %% %%%%%%%%%%%%%%%%%%%% MPC Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Controller sample time [s]
-t_smpc = 60*10;
+t_smpc = 60;
 % Prediction horizon [in samples]:
-PH = 12;
+PH = 10;
 % Control horizon [in samples]:
 CH=1;
 
@@ -25,7 +25,7 @@ W_elec = 1.* W_pv .* W_cop;
 WW_elec= repmat(W_elec,2,1);
 
 %% 
-load('MPC_controller_object.mat')
+%load('Design_session_19_1.mat')
 %% 
 global i
 i =0;

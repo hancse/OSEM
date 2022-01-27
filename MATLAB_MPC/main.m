@@ -14,9 +14,7 @@
 % 5) Visualize the simulation results
 
 %% Prepare the workspace: 
-clear all
-close all
-clc
+ 
 %% Load the system's physical parameters.
 parameters;
 
