@@ -32,4 +32,11 @@ void pollInputs();
   */
 void pollOutputs();
 
+/**
+ * @brief pollCommunication
+ * @brief poll function for communication control >> needs to be called constantly
+ * @return void
+ */
+void pollCommunication();
+
 #endif /* SIOMMODULE_STATEMACHINE_H_ */
