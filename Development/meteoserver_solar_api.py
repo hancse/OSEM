@@ -17,6 +17,8 @@ uh = urllib.request.urlopen(url)
 data = uh.read().decode()
 info = json.loads(data)
 
+
+
 print("\n\n" + "#################################")
 print(info['plaatsnaam'][0]['plaats'] + " (" + info['current'][0]['station'] + ")")
 print(info['current'][0]['cet'])

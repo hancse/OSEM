@@ -1,6 +1,20 @@
 %% Main Script
+% This script does the following:
+% 1) Loads the physical parameters of the heat pump and the tank.
 
+% 2) Loads the external datastets required for simulation, namely:
+    % global solar rradiation (KNMI).
+    % ambient temperature (KNMI).
+    % DHW usage profile (European Directive).
 
+% 3) Design of the MPC controller.
+
+% 4) Invoke Simulink to simulate the dynamic system with MPC controller.
+
+% 5) Visualize the simulation results
+
+%% Prepare the workspace: 
+ 
 %% Load the system's physical parameters.
 parameters;
 
@@ -11,5 +25,7 @@ External_datasets;
 MPC_settings;
 
 %% Simulate the system:
+sim('MPC_v02.slx')
 
-%% Report the results:
+%% visualize the results:
+results;
