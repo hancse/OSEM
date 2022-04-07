@@ -1,0 +1,13 @@
+This folder contains:
+
+1. MPC_Deployed_RPI:
+The MPC code that will eventually be deployed to the Raspberry PI.
+
+2. MPC_Design_Simulation:
+The MATLAB/simulink files used to design, test and tune the MPC controller in Simulation level.
+
+3. Plant Models:
+The dynamic model of the plant.
+
+4. Sensor_Actuator_Test_program:
+A simulink fileused to test reading the sensor data and sending setpoints to actuators. 
