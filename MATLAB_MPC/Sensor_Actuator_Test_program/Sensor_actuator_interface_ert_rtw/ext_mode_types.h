@@ -7,9 +7,9 @@
  *
  * Code generation for model "Sensor_actuator_interface".
  *
- * Model version              : 2.38
+ * Model version              : 2.43
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Tue Apr  5 17:14:52 2022
+ * C source code generated on : Fri Aug 12 16:54:49 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex

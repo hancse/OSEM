@@ -1,5 +1,5 @@
 %% create MPC controller object with sample time
-mpc1 = mpc(plant_C, 60);
+mpc1 = mpc(plant, 60);
 %% specify prediction horizon
 mpc1.PredictionHorizon = 10;
 %% specify control horizon
@@ -37,4 +37,4 @@ options.MDLookAhead = 'off';
 options.Constraints = 'on';
 options.OpenLoop = 'off';
 %% run simulation
-sim(mpc1, 101, mpc1_RefSignal, mpc1_MDSignal, options);
+%sim(mpc1, 101, mpc1_RefSignal, mpc1_MDSignal, options);

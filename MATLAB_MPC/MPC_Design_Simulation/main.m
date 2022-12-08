@@ -23,7 +23,8 @@ External_datasets;
 
 %% Configure the model predictive Controller:
 MPC_settings;
-
+load('plant_ss_model')
+MPC_code_29_3;
 %% Simulate the system:
 sim('MPC_v02.slx')
 
