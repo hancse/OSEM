@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Sensor_actuator_interface'.
  *
- * Model version                  : 2.38
+ * Model version                  : 2.43
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Tue Apr  5 17:14:52 2022
+ * C/C++ source code generated on : Fri Aug 12 16:54:49 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -22,10 +22,15 @@
 
 /* Block parameters (default storage) */
 P_Sensor_actuator_interface_T Sensor_actuator_interface_P = {
-  /* Expression: 48.18492635091146
+  /* Expression: 1/6.6
+   * Referenced by: '<Root>/[Hz] to [L//min]'
+   */
+  0.15151515151515152,
+
+  /* Expression: 100
    * Referenced by: '<Root>/0 - 100%'
    */
-  48.184926350911461,
+  100.0,
 
   /* Expression: 79.19979858398438
    * Referenced by: '<Root>/0- 100%'

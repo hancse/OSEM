@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Sensor_actuator_interface'.
  *
- * Model version                  : 2.38
+ * Model version                  : 2.43
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Tue Apr  5 17:14:52 2022
+ * C/C++ source code generated on : Fri Aug 12 16:54:49 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -82,8 +82,18 @@
 /* Block signals (default storage) */
 typedef struct {
   uint8_T Topic[128];
+  real_T flowLmin;                     /* '<Root>/[Hz] to [L//min]' */
   real_T MQTTSubscribe6_o2[2];         /* '<Root>/MQTT Subscribe6' */
+  real_T MQTTSubscribe5_o2[2];         /* '<Root>/MQTT Subscribe5' */
+  real_T MQTTSubscribe4_o2[2];         /* '<Root>/MQTT Subscribe4' */
+  real_T MQTTSubscribe3_o2[2];         /* '<Root>/MQTT Subscribe3' */
+  real_T MQTTSubscribe2_o2[2];         /* '<Root>/MQTT Subscribe2' */
   uint8_T MQTTSubscribe6_o1;           /* '<Root>/MQTT Subscribe6' */
+  uint8_T MQTTSubscribe5_o1;           /* '<Root>/MQTT Subscribe5' */
+  uint8_T MQTTSubscribe4_o1;           /* '<Root>/MQTT Subscribe4' */
+  uint8_T MQTTSubscribe3_o1;           /* '<Root>/MQTT Subscribe3' */
+  uint8_T MQTTSubscribe2_o1;           /* '<Root>/MQTT Subscribe2' */
+  uint8_T MQTTSubscribe1_o1;           /* '<Root>/MQTT Subscribe1' */
   int8_T MQTTPublish1;                 /* '<Root>/MQTT Publish1' */
   int8_T MQTTPublish;                  /* '<Root>/MQTT Publish' */
 } B_Sensor_actuator_interface_T;
@@ -93,6 +103,11 @@ typedef struct {
   codertarget_linux_blocks_MQ_m_T obj; /* '<Root>/MQTT Publish1' */
   codertarget_linux_blocks_MQ_m_T obj_d;/* '<Root>/MQTT Publish' */
   codertarget_linux_blocks_MQTT_T obj_p;/* '<Root>/MQTT Subscribe6' */
+  codertarget_linux_blocks_MQTT_T obj_l;/* '<Root>/MQTT Subscribe5' */
+  codertarget_linux_blocks_MQTT_T obj_n;/* '<Root>/MQTT Subscribe4' */
+  codertarget_linux_blocks_MQTT_T obj_o;/* '<Root>/MQTT Subscribe3' */
+  codertarget_linux_blocks_MQTT_T obj_e;/* '<Root>/MQTT Subscribe2' */
+  codertarget_linux_blocks_MQTT_T obj_a;/* '<Root>/MQTT Subscribe1' */
   struct {
     void *AQHandles;
   } TAQSigLogging_InsertedFor_Demux;   /* synthesized block */
@@ -100,6 +115,46 @@ typedef struct {
   struct {
     void *AQHandles;
   } TAQSigLogging_InsertedFor_MQTTS;   /* synthesized block */
+
+  struct {
+    void *AQHandles;
+  } TAQSigLogging_InsertedFor_HztoL;   /* synthesized block */
+
+  struct {
+    void *AQHandles;
+  } TAQSigLogging_InsertedFor_MQT_a;   /* synthesized block */
+
+  struct {
+    void *AQHandles;
+  } TAQSigLogging_InsertedFor_Dem_k;   /* synthesized block */
+
+  struct {
+    void *AQHandles;
+  } TAQSigLogging_InsertedFor_MQT_c;   /* synthesized block */
+
+  struct {
+    void *AQHandles;
+  } TAQSigLogging_InsertedFor_De_ky;   /* synthesized block */
+
+  struct {
+    void *AQHandles;
+  } TAQSigLogging_InsertedFor_MQT_f;   /* synthesized block */
+
+  struct {
+    void *AQHandles;
+  } TAQSigLogging_InsertedFor_Dem_e;   /* synthesized block */
+
+  struct {
+    void *AQHandles;
+  } TAQSigLogging_InsertedFor_MQT_e;   /* synthesized block */
+
+  struct {
+    void *AQHandles;
+  } TAQSigLogging_InsertedFor_De_ks;   /* synthesized block */
+
+  struct {
+    void *AQHandles;
+  } TAQSigLogging_InsertedFor_MQT_n;   /* synthesized block */
 
   struct {
     void *AQHandles;
@@ -112,7 +167,10 @@ typedef struct {
 
 /* Parameters (default storage) */
 struct P_Sensor_actuator_interface_T_ {
-  real_T u100_Value;                   /* Expression: 48.18492635091146
+  real_T HztoLmin_Gain;                /* Expression: 1/6.6
+                                        * Referenced by: '<Root>/[Hz] to [L//min]'
+                                        */
+  real_T u100_Value;                   /* Expression: 100
                                         * Referenced by: '<Root>/0 - 100%'
                                         */
   real_T u100_Value_g;                 /* Expression: 79.19979858398438

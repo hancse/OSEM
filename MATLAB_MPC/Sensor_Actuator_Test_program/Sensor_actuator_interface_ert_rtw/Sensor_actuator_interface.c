@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Sensor_actuator_interface'.
  *
- * Model version                  : 2.38
+ * Model version                  : 2.43
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Tue Apr  5 17:14:52 2022
+ * C/C++ source code generated on : Fri Aug 12 16:54:49 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -37,6 +37,7 @@ void Sensor_actuator_interface_step(void)
   static const char_T tmp_0[7] = "valve1";
   static const char_T tmp_1[7] = "valve2";
   char* payLoadStr;
+  real_T b_varargout_2[2];
   real_T tmp;
   int32_T i;
   uint32_T stringPayloadLen;
@@ -47,6 +48,41 @@ void Sensor_actuator_interface_step(void)
   MW_MQTT_subscribe_step(Sensor_actuator_interface_DW.obj_p.subscribeID, 2,
     &Sensor_actuator_interface_B.MQTTSubscribe6_o1,
     &Sensor_actuator_interface_B.MQTTSubscribe6_o2[0],
+    &Sensor_actuator_interface_B.Topic[0]);
+
+  /* MATLABSystem: '<Root>/MQTT Subscribe1' */
+  MW_MQTT_subscribe_step(Sensor_actuator_interface_DW.obj_a.subscribeID, 2,
+    &Sensor_actuator_interface_B.MQTTSubscribe1_o1, &b_varargout_2[0],
+    &Sensor_actuator_interface_B.Topic[0]);
+
+  /* Gain: '<Root>/[Hz] to [L//min]' incorporates:
+   *  MATLABSystem: '<Root>/MQTT Subscribe1'
+   */
+  Sensor_actuator_interface_B.flowLmin =
+    Sensor_actuator_interface_P.HztoLmin_Gain * b_varargout_2[1];
+
+  /* MATLABSystem: '<Root>/MQTT Subscribe2' */
+  MW_MQTT_subscribe_step(Sensor_actuator_interface_DW.obj_e.subscribeID, 2,
+    &Sensor_actuator_interface_B.MQTTSubscribe2_o1,
+    &Sensor_actuator_interface_B.MQTTSubscribe2_o2[0],
+    &Sensor_actuator_interface_B.Topic[0]);
+
+  /* MATLABSystem: '<Root>/MQTT Subscribe3' */
+  MW_MQTT_subscribe_step(Sensor_actuator_interface_DW.obj_o.subscribeID, 2,
+    &Sensor_actuator_interface_B.MQTTSubscribe3_o1,
+    &Sensor_actuator_interface_B.MQTTSubscribe3_o2[0],
+    &Sensor_actuator_interface_B.Topic[0]);
+
+  /* MATLABSystem: '<Root>/MQTT Subscribe4' */
+  MW_MQTT_subscribe_step(Sensor_actuator_interface_DW.obj_n.subscribeID, 2,
+    &Sensor_actuator_interface_B.MQTTSubscribe4_o1,
+    &Sensor_actuator_interface_B.MQTTSubscribe4_o2[0],
+    &Sensor_actuator_interface_B.Topic[0]);
+
+  /* MATLABSystem: '<Root>/MQTT Subscribe5' */
+  MW_MQTT_subscribe_step(Sensor_actuator_interface_DW.obj_l.subscribeID, 2,
+    &Sensor_actuator_interface_B.MQTTSubscribe5_o1,
+    &Sensor_actuator_interface_B.MQTTSubscribe5_o2[0],
     &Sensor_actuator_interface_B.Topic[0]);
 
   /* DataTypeConversion: '<Root>/Data Type Conversion2' incorporates:
@@ -144,21 +180,26 @@ void Sensor_actuator_interface_initialize(void)
   Sensor_actuator_interface_M->Timing.stepSize0 = 1.0;
 
   /* External mode info */
-  Sensor_actuator_interface_M->Sizes.checksums[0] = (1471012963U);
-  Sensor_actuator_interface_M->Sizes.checksums[1] = (2794616102U);
-  Sensor_actuator_interface_M->Sizes.checksums[2] = (1602180259U);
-  Sensor_actuator_interface_M->Sizes.checksums[3] = (220623710U);
+  Sensor_actuator_interface_M->Sizes.checksums[0] = (255099104U);
+  Sensor_actuator_interface_M->Sizes.checksums[1] = (2125411252U);
+  Sensor_actuator_interface_M->Sizes.checksums[2] = (1664060526U);
+  Sensor_actuator_interface_M->Sizes.checksums[3] = (3917868156U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
     static RTWExtModeInfo rt_ExtModeInfo;
-    static const sysRanDType *systemRan[4];
+    static const sysRanDType *systemRan[9];
     Sensor_actuator_interface_M->extModeInfo = (&rt_ExtModeInfo);
     rteiSetSubSystemActiveVectorAddresses(&rt_ExtModeInfo, systemRan);
     systemRan[0] = &rtAlwaysEnabled;
     systemRan[1] = &rtAlwaysEnabled;
     systemRan[2] = &rtAlwaysEnabled;
     systemRan[3] = &rtAlwaysEnabled;
+    systemRan[4] = &rtAlwaysEnabled;
+    systemRan[5] = &rtAlwaysEnabled;
+    systemRan[6] = &rtAlwaysEnabled;
+    systemRan[7] = &rtAlwaysEnabled;
+    systemRan[8] = &rtAlwaysEnabled;
     rteiSetModelMappingInfoPtr(Sensor_actuator_interface_M->extModeInfo,
       &Sensor_actuator_interface_M->SpecialInfo.mappingInfo);
     rteiSetChecksumsPtr(Sensor_actuator_interface_M->extModeInfo,
@@ -168,7 +209,12 @@ void Sensor_actuator_interface_initialize(void)
   }
 
   {
-    static const char_T tmp_0[6] = "temp8";
+    static const char_T tmp_0[6] = "temp1";
+    static const char_T tmp_1[6] = "flow1";
+    static const char_T tmp_2[6] = "temp2";
+    static const char_T tmp_3[6] = "temp3";
+    static const char_T tmp_4[6] = "temp4";
+    static const char_T tmp_5[6] = "temp5";
     int32_T i;
     char_T topicRegExpStr[6];
     char_T topicStr[6];
@@ -190,6 +236,86 @@ void Sensor_actuator_interface_initialize(void)
 
     /* End of Start for MATLABSystem: '<Root>/MQTT Subscribe6' */
 
+    /* Start for MATLABSystem: '<Root>/MQTT Subscribe1' */
+    Sensor_actuator_interface_DW.obj_a.matlabCodegenIsDeleted = false;
+    Sensor_actuator_interface_DW.obj_a.isSetupComplete = false;
+    Sensor_actuator_interface_DW.obj_a.isInitialized = 1;
+    for (i = 0; i < 6; i++) {
+      tmp = tmp_1[i];
+      topicStr[i] = tmp;
+      topicRegExpStr[i] = tmp;
+    }
+
+    MW_MQTT_subscribe_setup(&topicStr[0], &topicRegExpStr[0],
+      &Sensor_actuator_interface_DW.obj_a.subscribeID);
+    Sensor_actuator_interface_DW.obj_a.isSetupComplete = true;
+
+    /* End of Start for MATLABSystem: '<Root>/MQTT Subscribe1' */
+
+    /* Start for MATLABSystem: '<Root>/MQTT Subscribe2' */
+    Sensor_actuator_interface_DW.obj_e.matlabCodegenIsDeleted = false;
+    Sensor_actuator_interface_DW.obj_e.isSetupComplete = false;
+    Sensor_actuator_interface_DW.obj_e.isInitialized = 1;
+    for (i = 0; i < 6; i++) {
+      tmp = tmp_2[i];
+      topicStr[i] = tmp;
+      topicRegExpStr[i] = tmp;
+    }
+
+    MW_MQTT_subscribe_setup(&topicStr[0], &topicRegExpStr[0],
+      &Sensor_actuator_interface_DW.obj_e.subscribeID);
+    Sensor_actuator_interface_DW.obj_e.isSetupComplete = true;
+
+    /* End of Start for MATLABSystem: '<Root>/MQTT Subscribe2' */
+
+    /* Start for MATLABSystem: '<Root>/MQTT Subscribe3' */
+    Sensor_actuator_interface_DW.obj_o.matlabCodegenIsDeleted = false;
+    Sensor_actuator_interface_DW.obj_o.isSetupComplete = false;
+    Sensor_actuator_interface_DW.obj_o.isInitialized = 1;
+    for (i = 0; i < 6; i++) {
+      tmp = tmp_3[i];
+      topicStr[i] = tmp;
+      topicRegExpStr[i] = tmp;
+    }
+
+    MW_MQTT_subscribe_setup(&topicStr[0], &topicRegExpStr[0],
+      &Sensor_actuator_interface_DW.obj_o.subscribeID);
+    Sensor_actuator_interface_DW.obj_o.isSetupComplete = true;
+
+    /* End of Start for MATLABSystem: '<Root>/MQTT Subscribe3' */
+
+    /* Start for MATLABSystem: '<Root>/MQTT Subscribe4' */
+    Sensor_actuator_interface_DW.obj_n.matlabCodegenIsDeleted = false;
+    Sensor_actuator_interface_DW.obj_n.isSetupComplete = false;
+    Sensor_actuator_interface_DW.obj_n.isInitialized = 1;
+    for (i = 0; i < 6; i++) {
+      tmp = tmp_4[i];
+      topicStr[i] = tmp;
+      topicRegExpStr[i] = tmp;
+    }
+
+    MW_MQTT_subscribe_setup(&topicStr[0], &topicRegExpStr[0],
+      &Sensor_actuator_interface_DW.obj_n.subscribeID);
+    Sensor_actuator_interface_DW.obj_n.isSetupComplete = true;
+
+    /* End of Start for MATLABSystem: '<Root>/MQTT Subscribe4' */
+
+    /* Start for MATLABSystem: '<Root>/MQTT Subscribe5' */
+    Sensor_actuator_interface_DW.obj_l.matlabCodegenIsDeleted = false;
+    Sensor_actuator_interface_DW.obj_l.isSetupComplete = false;
+    Sensor_actuator_interface_DW.obj_l.isInitialized = 1;
+    for (i = 0; i < 6; i++) {
+      tmp = tmp_5[i];
+      topicStr[i] = tmp;
+      topicRegExpStr[i] = tmp;
+    }
+
+    MW_MQTT_subscribe_setup(&topicStr[0], &topicRegExpStr[0],
+      &Sensor_actuator_interface_DW.obj_l.subscribeID);
+    Sensor_actuator_interface_DW.obj_l.isSetupComplete = true;
+
+    /* End of Start for MATLABSystem: '<Root>/MQTT Subscribe5' */
+
     /* Start for MATLABSystem: '<Root>/MQTT Publish' */
     Sensor_actuator_interface_DW.obj_d.isInitialized = 1;
     MW_MQTT_publish_setup();
@@ -209,6 +335,36 @@ void Sensor_actuator_interface_terminate(void)
   }
 
   /* End of Terminate for MATLABSystem: '<Root>/MQTT Subscribe6' */
+  /* Terminate for MATLABSystem: '<Root>/MQTT Subscribe1' */
+  if (!Sensor_actuator_interface_DW.obj_a.matlabCodegenIsDeleted) {
+    Sensor_actuator_interface_DW.obj_a.matlabCodegenIsDeleted = true;
+  }
+
+  /* End of Terminate for MATLABSystem: '<Root>/MQTT Subscribe1' */
+  /* Terminate for MATLABSystem: '<Root>/MQTT Subscribe2' */
+  if (!Sensor_actuator_interface_DW.obj_e.matlabCodegenIsDeleted) {
+    Sensor_actuator_interface_DW.obj_e.matlabCodegenIsDeleted = true;
+  }
+
+  /* End of Terminate for MATLABSystem: '<Root>/MQTT Subscribe2' */
+  /* Terminate for MATLABSystem: '<Root>/MQTT Subscribe3' */
+  if (!Sensor_actuator_interface_DW.obj_o.matlabCodegenIsDeleted) {
+    Sensor_actuator_interface_DW.obj_o.matlabCodegenIsDeleted = true;
+  }
+
+  /* End of Terminate for MATLABSystem: '<Root>/MQTT Subscribe3' */
+  /* Terminate for MATLABSystem: '<Root>/MQTT Subscribe4' */
+  if (!Sensor_actuator_interface_DW.obj_n.matlabCodegenIsDeleted) {
+    Sensor_actuator_interface_DW.obj_n.matlabCodegenIsDeleted = true;
+  }
+
+  /* End of Terminate for MATLABSystem: '<Root>/MQTT Subscribe4' */
+  /* Terminate for MATLABSystem: '<Root>/MQTT Subscribe5' */
+  if (!Sensor_actuator_interface_DW.obj_l.matlabCodegenIsDeleted) {
+    Sensor_actuator_interface_DW.obj_l.matlabCodegenIsDeleted = true;
+  }
+
+  /* End of Terminate for MATLABSystem: '<Root>/MQTT Subscribe5' */
 }
 
 /*
