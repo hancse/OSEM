@@ -1,3 +1,4 @@
 (fp_lib_table
   (lib (name TinyPico)(type KiCad)(uri ${KIPRJMOD}/TinyPico.pretty)(options "")(descr ""))
+  (lib (name FTSH)(type KiCad)(uri "X:/10_Projects/HAN/0034PD - SIOM/05 Hardware/KiCad/SIOMv01")(options "")(descr ""))
 )
