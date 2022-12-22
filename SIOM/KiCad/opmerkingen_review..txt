@@ -1,0 +1,15 @@
+opmerkingen t.b.v. SIOMv01  PCB:
+
+Algemeen:
+	Problemen met libraries checken.
+	detectie powerfail voor tiny-Pico
+	Brown out condensatoren voor tiny-Pico.
+
+schema:
+	1. Berekening versterking opamps klopt niet.
+	2. eventueel pullups en serie weerstanden bij 1-wire in/uit-gangen.?
+
+PCB.
+	1. onderlinge afstand TMP0X connectoren.
+	2. een ononderbroken GND plane?!
+	3. FD101 meer naar rechts verplaatsen.

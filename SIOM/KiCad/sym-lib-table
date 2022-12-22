@@ -1,0 +1,6 @@
+(sym_lib_table
+  (lib (name TinyPico)(type Legacy)(uri ${KIPRJMOD}/TinyPico.lib)(options "")(descr ""))
+  (lib (name SIOMv01-rescue)(type Legacy)(uri ${KIPRJMOD}/SIOMv01-rescue.lib)(options "")(descr ""))
+  (lib (name SPBW06)(type Legacy)(uri ${KIPRJMOD}/SPBW06.lib)(options "")(descr ""))
+  (lib (name FTSH)(type Legacy)(uri "X:/10_Projects/HAN/0034PD - SIOM/05 Hardware/KiCad/SIOMv01/FTSH-107-01-L-DV-K.lib")(options "")(descr ""))
+)

@@ -1,0 +1,15 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP DS2482-800
+D 8-Channel 1-Wire Master
+K Maxim Integrated 1-Wire 8-Channel Master
+F https://datasheets.maximintegrated.com/en/ds/DS2482-800.pdf
+$ENDCMP
+#
+$CMP TinyPico
+D TinyPico development board
+K ESP32
+F https://www.tinypico.com/
+$ENDCMP
+#
+#End Doc Library

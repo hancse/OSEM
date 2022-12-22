@@ -1,0 +1,507 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 9 10
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L SIOMv01-rescue:+3V3-power #PWR?
+U 1 1 60792D17
+P 7500 2300
+AR Path="/5F8C27AF/60792D17" Ref="#PWR?"  Part="1" 
+AR Path="/5F97DE9D/60792D17" Ref="#PWR?"  Part="1" 
+AR Path="/60781610/60792D17" Ref="#PWR0908"  Part="1" 
+F 0 "#PWR0908" H 7500 2150 50  0001 C CNN
+F 1 "+3V3" H 7515 2473 50  0000 C CNN
+F 2 "" H 7500 2300 50  0001 C CNN
+F 3 "" H 7500 2300 50  0001 C CNN
+	1    7500 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L SIOMv01-rescue:R-Device R?
+U 1 1 60792D1D
+P 7500 2500
+AR Path="/5F8C27AF/60792D1D" Ref="R?"  Part="1" 
+AR Path="/5F97DE9D/60792D1D" Ref="R?"  Part="1" 
+AR Path="/60781610/60792D1D" Ref="R902"  Part="1" 
+F 0 "R902" H 7750 2500 50  0000 R CNN
+F 1 "4K7" H 7750 2400 50  0000 R CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 7430 2500 50  0001 C CNN
+F 3 "~" H 7500 2500 50  0001 C CNN
+	1    7500 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L SIOMv01-rescue:+3V3-power #PWR?
+U 1 1 60792D24
+P 6650 2300
+AR Path="/5F8C27AF/60792D24" Ref="#PWR?"  Part="1" 
+AR Path="/5F97DE9D/60792D24" Ref="#PWR?"  Part="1" 
+AR Path="/60781610/60792D24" Ref="#PWR0907"  Part="1" 
+F 0 "#PWR0907" H 6650 2150 50  0001 C CNN
+F 1 "+3V3" H 6665 2473 50  0000 C CNN
+F 2 "" H 6650 2300 50  0001 C CNN
+F 3 "" H 6650 2300 50  0001 C CNN
+	1    6650 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L SIOMv01-rescue:R-Device R?
+U 1 1 60792D2A
+P 6650 2500
+AR Path="/5F8C27AF/60792D2A" Ref="R?"  Part="1" 
+AR Path="/5F97DE9D/60792D2A" Ref="R?"  Part="1" 
+AR Path="/60781610/60792D2A" Ref="R901"  Part="1" 
+F 0 "R901" H 6900 2500 50  0000 R CNN
+F 1 "4K7" H 6900 2400 50  0000 R CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 6580 2500 50  0001 C CNN
+F 3 "~" H 6650 2500 50  0001 C CNN
+	1    6650 2500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6650 2300 6650 2350
+Wire Wire Line
+	7500 2300 7500 2350
+$Comp
+L TinyPico:TinyPico U901
+U 1 1 60792D35
+P 5650 2750
+F 0 "U901" H 5400 3450 50  0000 C CNN
+F 1 "TinyPico" H 5650 3300 50  0000 C CNN
+F 2 "Package_DIP:DIP-24_W15.24mm_Socket_LongPads" H 6100 3200 50  0001 C CNN
+F 3 "https://www.tinypico.com/" H 6100 3200 50  0001 C CNN
+	1    5650 2750
+	1    0    0    -1  
+$EndComp
+$Comp
+L SIOMv01-rescue:GND-power #PWR0903
+U 1 1 60792D3B
+P 5150 4250
+F 0 "#PWR0903" H 5150 4000 50  0001 C CNN
+F 1 "GND" H 5155 4077 50  0000 C CNN
+F 2 "" H 5150 4250 50  0001 C CNN
+F 3 "" H 5150 4250 50  0001 C CNN
+	1    5150 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L SIOMv01-rescue:GND-power #PWR0906
+U 1 1 60792D41
+P 6150 4250
+F 0 "#PWR0906" H 6150 4000 50  0001 C CNN
+F 1 "GND" H 6155 4077 50  0000 C CNN
+F 2 "" H 6150 4250 50  0001 C CNN
+F 3 "" H 6150 4250 50  0001 C CNN
+	1    6150 4250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5150 3200 5200 3200
+Wire Wire Line
+	6150 2400 6100 2400
+Wire Wire Line
+	5200 3100 4950 3100
+Wire Wire Line
+	4950 3100 4950 2800
+NoConn ~ 5200 3300
+$Comp
+L SIOMv01-rescue:+5V-power #PWR0902
+U 1 1 60792D4F
+P 4950 2250
+F 0 "#PWR0902" H 4950 2100 50  0001 C CNN
+F 1 "+5V" H 4965 2423 50  0000 C CNN
+F 2 "" H 4950 2250 50  0001 C CNN
+F 3 "" H 4950 2250 50  0001 C CNN
+	1    4950 2250
+	1    0    0    -1  
+$EndComp
+$Comp
+L SIOMv01-rescue:C-Device C?
+U 1 1 60792D67
+P 5300 5900
+AR Path="/5F8BACBE/60792D67" Ref="C?"  Part="1" 
+AR Path="/5F97DE9D/60792D67" Ref="C?"  Part="1" 
+AR Path="/60781610/60792D67" Ref="C901"  Part="1" 
+F 0 "C901" H 5415 5946 50  0000 L CNN
+F 1 "100nF 50V" H 5415 5855 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 5338 5750 50  0001 C CNN
+F 3 "~" H 5300 5900 50  0001 C CNN
+	1    5300 5900
+	1    0    0    -1  
+$EndComp
+$Comp
+L SIOMv01-rescue:GND-power #PWR?
+U 1 1 60792D6D
+P 5300 6100
+AR Path="/60792D6D" Ref="#PWR?"  Part="1" 
+AR Path="/5F8BACBE/60792D6D" Ref="#PWR?"  Part="1" 
+AR Path="/5F97DE9D/60792D6D" Ref="#PWR?"  Part="1" 
+AR Path="/60781610/60792D6D" Ref="#PWR0905"  Part="1" 
+F 0 "#PWR0905" H 5300 5850 50  0001 C CNN
+F 1 "GND" H 5305 5927 50  0000 C CNN
+F 2 "" H 5300 6100 50  0001 C CNN
+F 3 "" H 5300 6100 50  0001 C CNN
+	1    5300 6100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5300 6100 5300 6050
+Wire Wire Line
+	5300 5750 5300 5700
+Text Notes 4650 1550 0    50   ~ 0
+Power consumption 5V unknown current consumption\nPower consumption 3V3 unknown current consumption
+Text HLabel 7600 2900 2    50   Output ~ 0
+SCL_TINYPICO
+Text HLabel 6700 2800 2    50   BiDi ~ 0
+SDA_TINYPICO
+$Comp
+L Switch:SW_Push SW901
+U 1 1 60792DDE
+P 3250 5850
+F 0 "SW901" V 3204 5998 50  0000 L CNN
+F 1 "SW_Push" V 3295 5998 50  0000 L CNN
+F 2 "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H9.5mm" H 3250 6050 50  0001 C CNN
+F 3 "~" H 3250 6050 50  0001 C CNN
+	1    3250 5850
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3250 5650 3250 5600
+Wire Wire Line
+	3250 6050 3250 6100
+$Comp
+L SIOMv01-rescue:GND-power #PWR?
+U 1 1 60792DE6
+P 3250 6100
+AR Path="/60792DE6" Ref="#PWR?"  Part="1" 
+AR Path="/5F8BACBE/60792DE6" Ref="#PWR?"  Part="1" 
+AR Path="/5F97DE9D/60792DE6" Ref="#PWR?"  Part="1" 
+AR Path="/60781610/60792DE6" Ref="#PWR0901"  Part="1" 
+F 0 "#PWR0901" H 3250 5850 50  0001 C CNN
+F 1 "GND" H 3255 5927 50  0000 C CNN
+F 2 "" H 3250 6100 50  0001 C CNN
+F 3 "" H 3250 6100 50  0001 C CNN
+	1    3250 6100
+	1    0    0    -1  
+$EndComp
+Text Label 3250 5600 0    50   ~ 0
+RESET
+NoConn ~ 6100 2600
+NoConn ~ 6100 2700
+NoConn ~ 6100 3000
+NoConn ~ 6100 3100
+NoConn ~ 6100 3200
+NoConn ~ 6100 3300
+NoConn ~ 5200 3000
+NoConn ~ 5200 2900
+NoConn ~ 5200 2800
+NoConn ~ 5200 2700
+NoConn ~ 5200 2600
+NoConn ~ 5200 2500
+Wire Wire Line
+	6650 2650 6650 2800
+Connection ~ 6650 2800
+Wire Wire Line
+	6650 2800 6700 2800
+Wire Wire Line
+	7500 2650 7500 2900
+Connection ~ 7500 2900
+Wire Wire Line
+	7500 2900 7600 2900
+Wire Wire Line
+	6100 2900 7500 2900
+Wire Wire Line
+	6100 2800 6650 2800
+Wire Wire Line
+	6100 2500 6300 2500
+Text Label 6300 2500 0    50   ~ 0
+RESET
+$Comp
+L Device:D_Schottky_Small D901
+U 1 1 609A350E
+P 4950 2700
+F 0 "D901" V 5050 2900 50  0000 R CNN
+F 1 "SL13-E3/61T" V 4950 3300 50  0000 R CNN
+F 2 "Diode_SMD:D_SMA" V 4950 2700 50  0001 C CNN
+F 3 "~" V 4950 2700 50  0001 C CNN
+	1    4950 2700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L SIOMv01-rescue:GND-power #PWR0113
+U 1 1 609A5DE7
+P 3000 4250
+F 0 "#PWR0113" H 3000 4000 50  0001 C CNN
+F 1 "GND" H 3005 4077 50  0000 C CNN
+F 2 "" H 3000 4250 50  0001 C CNN
+F 3 "" H 3000 4250 50  0001 C CNN
+	1    3000 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP C903
+U 1 1 609AB889
+P 4950 3550
+F 0 "C903" H 4650 3600 50  0000 L CNN
+F 1 "1000uF" H 4600 3500 50  0000 L CNN
+F 2 "Capacitor_SMD:CP_Elec_10x10.5" H 4988 3400 50  0001 C CNN
+F 3 "~" H 4950 3550 50  0001 C CNN
+	1    4950 3550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4950 3400 4950 3100
+Connection ~ 4950 3100
+$Comp
+L SIOMv01-rescue:GND-power #PWR0117
+U 1 1 609AC109
+P 4950 4250
+F 0 "#PWR0117" H 4950 4000 50  0001 C CNN
+F 1 "GND" H 4955 4077 50  0000 C CNN
+F 2 "" H 4950 4250 50  0001 C CNN
+F 3 "" H 4950 4250 50  0001 C CNN
+	1    4950 4250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3000 3350 3000 3100
+Wire Wire Line
+	3000 3950 3000 4250
+Wire Wire Line
+	4950 3700 4950 4250
+Wire Wire Line
+	5150 3200 5150 4250
+Wire Wire Line
+	6150 2400 6150 4250
+$Comp
+L SIOMv01-rescue:R-Device R?
+U 1 1 609B6A54
+P 3600 4000
+AR Path="/5F8C27AF/609B6A54" Ref="R?"  Part="1" 
+AR Path="/5F97DE9D/609B6A54" Ref="R?"  Part="1" 
+AR Path="/60781610/609B6A54" Ref="R906"  Part="1" 
+F 0 "R906" H 3550 4050 50  0000 R CNN
+F 1 "10K" H 3500 3950 50  0000 R CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 3530 4000 50  0001 C CNN
+F 3 "~" H 3600 4000 50  0001 C CNN
+	1    3600 4000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3000 3100 3600 3100
+$Comp
+L SIOMv01-rescue:R-Device R?
+U 1 1 609BD633
+P 3050 2900
+AR Path="/5F8C27AF/609BD633" Ref="R?"  Part="1" 
+AR Path="/5F97DE9D/609BD633" Ref="R?"  Part="1" 
+AR Path="/60781610/609BD633" Ref="R904"  Part="1" 
+F 0 "R904" V 3150 2900 50  0000 R CNN
+F 1 "68K" V 2950 2950 50  0000 R CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 2980 2900 50  0001 C CNN
+F 3 "~" H 3050 2900 50  0001 C CNN
+	1    3050 2900
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3200 2900 3350 2900
+Wire Wire Line
+	3350 2900 3350 3550
+Wire Wire Line
+	3350 3550 3200 3550
+Wire Wire Line
+	2900 2900 2550 2900
+Wire Wire Line
+	2550 3650 2550 2900
+Connection ~ 2550 3650
+Wire Wire Line
+	2550 3650 2600 3650
+Wire Wire Line
+	4950 2250 4950 2600
+$Comp
+L SIOMv01-rescue:R-Device R?
+U 1 1 609CB293
+P 3600 3350
+AR Path="/5F8C27AF/609CB293" Ref="R?"  Part="1" 
+AR Path="/5F97DE9D/609CB293" Ref="R?"  Part="1" 
+AR Path="/60781610/609CB293" Ref="R905"  Part="1" 
+F 0 "R905" H 3550 3400 50  0000 R CNN
+F 1 "10K" H 3500 3300 50  0000 R CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 3530 3350 50  0001 C CNN
+F 3 "~" H 3600 3350 50  0001 C CNN
+	1    3600 3350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3600 3200 3600 3100
+Connection ~ 3600 3100
+Connection ~ 3350 3550
+Connection ~ 3600 3550
+Wire Wire Line
+	3600 3550 3600 3500
+Wire Wire Line
+	3600 3550 3600 3850
+Wire Wire Line
+	3350 3550 3600 3550
+$Comp
+L SIOMv01-rescue:GND-power #PWR0122
+U 1 1 609D3BBC
+P 3600 4250
+F 0 "#PWR0122" H 3600 4000 50  0001 C CNN
+F 1 "GND" H 3605 4077 50  0000 C CNN
+F 2 "" H 3600 4250 50  0001 C CNN
+F 3 "" H 3600 4250 50  0001 C CNN
+	1    3600 4250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3600 4250 3600 4150
+$Comp
+L SIOMv01-rescue:R-Device R?
+U 1 1 609D4C3E
+P 4000 3550
+AR Path="/5F8C27AF/609D4C3E" Ref="R?"  Part="1" 
+AR Path="/5F97DE9D/609D4C3E" Ref="R?"  Part="1" 
+AR Path="/60781610/609D4C3E" Ref="R907"  Part="1" 
+F 0 "R907" H 3950 3600 50  0000 R CNN
+F 1 "10K" H 3900 3500 50  0000 R CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 3930 3550 50  0001 C CNN
+F 3 "~" H 4000 3550 50  0001 C CNN
+	1    4000 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L SIOMv01-rescue:+5V-power #PWR0123
+U 1 1 609D54FE
+P 4000 3300
+F 0 "#PWR0123" H 4000 3150 50  0001 C CNN
+F 1 "+5V" H 4100 3400 50  0000 C CNN
+F 2 "" H 4000 3300 50  0001 C CNN
+F 3 "" H 4000 3300 50  0001 C CNN
+	1    4000 3300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4000 3300 4000 3400
+$Comp
+L SIOMv01-rescue:R-Device R?
+U 1 1 609D6515
+P 4000 4000
+AR Path="/5F8C27AF/609D6515" Ref="R?"  Part="1" 
+AR Path="/5F97DE9D/609D6515" Ref="R?"  Part="1" 
+AR Path="/60781610/609D6515" Ref="R908"  Part="1" 
+F 0 "R908" H 3950 4050 50  0000 R CNN
+F 1 "15K" H 3900 3950 50  0000 R CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 3930 4000 50  0001 C CNN
+F 3 "~" H 4000 4000 50  0001 C CNN
+	1    4000 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L SIOMv01-rescue:GND-power #PWR0124
+U 1 1 609D67ED
+P 4000 4250
+F 0 "#PWR0124" H 4000 4000 50  0001 C CNN
+F 1 "GND" H 4005 4077 50  0000 C CNN
+F 2 "" H 4000 4250 50  0001 C CNN
+F 3 "" H 4000 4250 50  0001 C CNN
+	1    4000 4250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4000 4250 4000 4150
+Wire Wire Line
+	4000 3850 4000 3750
+Wire Wire Line
+	3200 3750 4000 3750
+Connection ~ 4000 3750
+Wire Wire Line
+	4000 3750 4000 3700
+Wire Wire Line
+	4700 2400 5200 2400
+Text Label 2150 3650 2    50   ~ 0
+DI_POWER_DROP
+Text Label 4700 2400 2    50   ~ 0
+DI_POWER_DROP
+$Comp
+L Device:C C902
+U 1 1 609E443E
+P 2000 5250
+F 0 "C902" H 2115 5296 50  0000 L CNN
+F 1 "100nF" H 2115 5205 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 2038 5100 50  0001 C CNN
+F 3 "~" H 2000 5250 50  0001 C CNN
+	1    2000 5250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3600 3100 4950 3100
+Text Label 3850 3100 0    50   ~ 0
++5V_TINY_PICO
+Text Label 2000 4950 0    50   ~ 0
++5V_TINY_PICO
+$Comp
+L SIOMv01-rescue:GND-power #PWR?
+U 1 1 609E7291
+P 2000 5550
+AR Path="/609E7291" Ref="#PWR?"  Part="1" 
+AR Path="/5F8BACBE/609E7291" Ref="#PWR?"  Part="1" 
+AR Path="/5F97DE9D/609E7291" Ref="#PWR?"  Part="1" 
+AR Path="/60781610/609E7291" Ref="#PWR0125"  Part="1" 
+F 0 "#PWR0125" H 2000 5300 50  0001 C CNN
+F 1 "GND" H 2005 5377 50  0000 C CNN
+F 2 "" H 2000 5550 50  0001 C CNN
+F 3 "" H 2000 5550 50  0001 C CNN
+	1    2000 5550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2000 5400 2000 5550
+Text Notes 2350 5250 0    50   ~ 0
+Place near U902
+$Comp
+L power:PWR_FLAG #FLG0102
+U 1 1 609E92B0
+P 3600 3000
+F 0 "#FLG0102" H 3600 3075 50  0001 C CNN
+F 1 "PWR_FLAG" H 3600 3173 50  0000 C CNN
+F 2 "" H 3600 3000 50  0001 C CNN
+F 3 "~" H 3600 3000 50  0001 C CNN
+	1    3600 3000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3600 3000 3600 3100
+Wire Wire Line
+	2150 3650 2550 3650
+Wire Wire Line
+	2000 4900 2000 5100
+Text Notes 1450 3800 0    50   ~ 0
++5V below 3.90V is High
+Text Notes 1450 3950 0    50   ~ 0
++5V above 4.45V is Low
+$Comp
+L Comparator:MCP6561R U902
+U 1 1 609F83A3
+P 2900 3650
+F 0 "U902" H 2900 4131 50  0000 C CNN
+F 1 "MCP6561R" H 2900 4040 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23-5" H 2900 3650 50  0001 C CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/MCP6561-1R-1U-2-4-1.8V-Low-Power-Push-Pull-Output-Comparator-DS20002139E.pdf" H 2900 3650 50  0001 C CNN
+	1    2900 3650
+	-1   0    0    -1  
+$EndComp
+Text Label 5300 5700 0    50   ~ 0
++5V_TINY_PICO
+$EndSCHEMATC
